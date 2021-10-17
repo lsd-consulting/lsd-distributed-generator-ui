@@ -1,0 +1,113 @@
+plugins {
+    kotlin("jvm")
+    kotlin("plugin.spring")
+    id("org.springframework.boot") version "2.5.5"
+}
+
+
+//////////////////////////
+// componentTest source set
+//////////////////////////
+
+sourceSets.create("componentTest") {
+    withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
+        kotlin.srcDir("src/componentTest/kotlin")
+        resources.srcDir("src/componentTest/resources")
+        compileClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
+        runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
+    }
+}
+
+val componentTest = task<Test>("componentTest") {
+    description = "Runs the component tests"
+    group = "verification"
+    testClassesDirs = sourceSets["componentTest"].output.classesDirs
+    classpath = sourceSets["componentTest"].runtimeClasspath
+    testLogging.showStandardStreams = true
+    systemProperty("lsd.core.report.outputDir", "$buildDir/reports/lsd")
+    useJUnitPlatform()
+    mustRunAfter(tasks["test"])
+}
+
+val componentTestImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.testImplementation.get())
+}
+val componentTestRuntimeOnly: Configuration by configurations.getting {
+    extendsFrom(configurations.testRuntimeOnly.get())
+}
+
+configurations["componentTestImplementation"].extendsFrom(configurations.runtimeOnly.get())
+
+tasks.check { dependsOn(componentTest) }
+
+//////////////////////////
+// dependencies
+//////////////////////////
+
+dependencies {
+    // Spring
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-data-rest")
+    implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
+
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+    implementation("org.apache.commons:commons-collections4:4.4")
+    implementation("io.pebbletemplates:pebble:3.1.5")
+    implementation("org.apache.httpcomponents:httpcore:4.4.14") {
+        because("it's needed for DB connection security")
+    }
+
+    // LSD
+    implementation("io.github.lsd-consulting:lsd-core:0.1.32")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:0.1.3")
+    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:0.1.3")
+
+    //////////////////////////////////
+    // Unit test dependencies
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1") {
+        because("we want to use JUnit 5")
+    }
+
+    //////////////////////////////////
+    // Component test dependencies
+    componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    componentTestImplementation("io.github.lsd-consulting:lsd-cucumber:0.1.1") {
+        // TODO Probably should be removed
+        because("we want to include the Cucumber scenarios in the LSDs")
+    }
+
+    // JUnit 5
+    componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1") {
+        because("we want to use JUnit 5")
+    }
+    componentTestImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1") {
+        because("we want to run parameterised tests")
+    }
+
+    // Cucumber
+    componentTestImplementation("io.cucumber:cucumber-java8:6.11.0") {
+        because("we want to use Cucumber JVM")
+    }
+    componentTestImplementation("io.cucumber:cucumber-java:6.11.0") {
+        because("we want to use Cucumber JVM")
+    }
+    componentTestImplementation("io.cucumber:cucumber-junit-platform-engine:6.11.0") {
+        because("we want to use Cucumber with JUnit 5")
+    }
+    componentTestImplementation("io.cucumber:cucumber-spring:6.11.0") {
+        because("we want to use dependency injection in our Cucumber tests")
+    }
+    componentTestImplementation("de.monochromata.cucumber:reporting-plugin:4.0.103") {
+        because("we want to see useful Cucumber reports")
+    }
+
+//    componentTestImplementation("com.approvaltests:approvaltests:11.7.0")
+    componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
+}

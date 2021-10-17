@@ -1,0 +1,23 @@
+@startuml
+
+!theme {{theme}}
+
+skinparam backgroundColor transparent
+
+hide unlinked
+
+{% for include in includes %}
+!include <{{include}}>
+{% endfor %}
+
+{% for participant in participants %}
+{{ participant.markup }}
+
+{% endfor %}
+
+{% for sequenceEvent in events %}
+{{sequenceEvent}}
+
+{% endfor %}
+
+@enduml
