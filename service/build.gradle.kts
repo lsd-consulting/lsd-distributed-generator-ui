@@ -1,7 +1,13 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
     id("org.springframework.boot") version "2.5.5"
+    `maven-publish`
+    id("java")
+    id("signing")
+    id("pl.allegro.tech.build.axion-release") version "1.8.1"
 }
 
 
@@ -110,4 +116,69 @@ dependencies {
 
 //    componentTestImplementation("com.approvaltests:approvaltests:11.7.0")
     componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
+}
+
+
+
+tasks.getByName<BootJar>("bootJar") {
+    enabled = true
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = true
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = "$group"
+            artifactId = "lsd-distributed-interceptor"
+            version = scmVersion.version
+
+            from(components["java"])
+//            artifact(sourceJar)
+//            artifact(javadocJar)
+            pom {
+                name.set("lsd-distributed-interceptor")
+                description.set("A set of interceptors gathering information from distributed sources for the LSD library.")
+                url.set("https://github.com/lsd-consulting/lsd-distributed-interceptors")
+                licenses {
+                    license {
+                        name.set("The Apache Software License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        distribution.set("repo")
+                    }
+                }
+                developers {
+                    developer {
+                        name.set("Lukasz")
+                        email.set("lukasz.gryzbon@gmail.com")
+                        organization.set("Integreety Ltd.")
+                        organizationUrl.set("https://www.integreety.co.uk")
+                    }
+                    developer {
+                        name.set("Nick")
+                        email.set("nicholas.mcdowall@gmail.com")
+                        organization.set("NKM IT Solutions")
+                        organizationUrl.set("https://github.com/nickmcdowall")
+                    }
+                }
+                scm {
+                    url.set("https://github.com/lsd-consulting/lsd-distributed-interceptors.git")
+                }
+            }
+            repositories {
+                maven {
+                    name = "sonatype"
+                    url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                    credentials(PasswordCredentials::class)
+                }
+            }
+
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications["mavenJava"])
 }
