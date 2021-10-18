@@ -6,10 +6,11 @@ plugins {
     kotlin("plugin.spring") version "1.4.21-2"
     id("java")
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
-    `java`
+    java
     `java-library`
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("pl.allegro.tech.build.axion-release") version "1.13.4"
 }
 
 nexusPublishing.repositories.sonatype {
@@ -18,7 +19,7 @@ nexusPublishing.repositories.sonatype {
 }
 
 group = "io.github.lsd-consulting"
-rootProject.version = System.getenv("CI_PIPELINE_ID")
+rootProject.version = scmVersion.version
 println("Build Version = ${project.version}")
 
 configurations {

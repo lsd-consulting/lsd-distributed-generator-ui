@@ -7,7 +7,7 @@ plugins {
     `maven-publish`
     id("java")
     id("signing")
-    id("pl.allegro.tech.build.axion-release") version "1.8.1"
+    id("pl.allegro.tech.build.axion-release")
 }
 
 
@@ -132,16 +132,16 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             groupId = "$group"
-            artifactId = "lsd-distributed-interceptor"
+            artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
             from(components["java"])
 //            artifact(sourceJar)
 //            artifact(javadocJar)
             pom {
-                name.set("lsd-distributed-interceptor")
-                description.set("A set of interceptors gathering information from distributed sources for the LSD library.")
-                url.set("https://github.com/lsd-consulting/lsd-distributed-interceptors")
+                name.set("lsd-distributed-generator-ui")
+                description.set("This is the graphical interface providing the LSD generation functionality.")
+                url.set("https://github.com/lsd-consulting/lsd-distributed-generator-ui")
                 licenses {
                     license {
                         name.set("The Apache Software License, Version 2.0")
@@ -164,7 +164,7 @@ publishing {
                     }
                 }
                 scm {
-                    url.set("https://github.com/lsd-consulting/lsd-distributed-interceptors.git")
+                    url.set("https://github.com/lsd-consulting/lsd-distributed-generator-ui.git")
                 }
             }
             repositories {
