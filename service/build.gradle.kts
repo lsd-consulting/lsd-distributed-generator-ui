@@ -131,7 +131,7 @@ tasks.getByName<BootJar>("bootJar") {
 
 tasks.getByName<Jar>("jar") {
     enabled = true
-    classifier = ""
+//    classifier = ""
 }
 
 //configurations {
