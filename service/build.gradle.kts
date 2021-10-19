@@ -138,7 +138,7 @@ publishing {
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
-            artifact(project.tasks.bootJar)
+//            artifact(project.tasks.bootJar)
 //            artifact("build/libs/${project.name}-${version}-plain.jar")
 
             from(components["java"])
