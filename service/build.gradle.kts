@@ -154,7 +154,7 @@ publishing {
             version = scmVersion.version
 
             artifact(tasks["bootJar"])
-            artifact("build/libs/${project.name}-${version}-plain.jar")
+//            artifact("build/libs/${project.name}-${version}-plain.jar")
 //            artifact(tasks["jar"])
 
             from(components["java"])
