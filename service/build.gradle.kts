@@ -123,6 +123,14 @@ dependencies {
 
 
 
+//configurations {
+//     https://stackoverflow.com/questions/61197984/bootjar-mavenjar-artifact-wasnt-produced-by-this-build
+//    [apiElements, runtimeElements].each {
+//        it.outgoing.artifacts.removeIf { it.buildDependencies.getDependencies(null).contains(jar) }
+//        it.outgoing.artifact(bootJar)
+//    }
+//}
+
 tasks.getByName<BootJar>("bootJar") {
     enabled = true
     classifier = "boot"
@@ -134,14 +142,6 @@ tasks.getByName<Jar>("jar") {
 //    classifier = ""
 }
 
-//configurations {
-//     https://stackoverflow.com/questions/61197984/bootjar-mavenjar-artifact-wasnt-produced-by-this-build
-//    [apiElements, runtimeElements].each {
-//        it.outgoing.artifacts.removeIf { it.buildDependencies.getDependencies(null).contains(jar) }
-//        it.outgoing.artifact(bootJar)
-//    }
-//}
-
 project.tasks.publish {
     dependsOn(project.tasks.bootJar)
 }
@@ -149,15 +149,13 @@ project.tasks.publish {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-//            artifact(tasks.getByName("jar"))
-//        }
-//        create<MavenPublication>("mavenJava") {
             groupId = "$group"
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
             artifact(tasks["bootJar"])
-            artifact(tasks["jar"])
+            artifact("${project.name}-${version}-plain.jar)")
+//            artifact(tasks["jar"])
 
             from(components["java"])
             pom {

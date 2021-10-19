@@ -7,7 +7,6 @@ plugins {
     id("java")
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     java
-//    `java-library`
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("pl.allegro.tech.build.axion-release") version "1.13.4"
