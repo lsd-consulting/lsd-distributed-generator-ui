@@ -131,7 +131,7 @@ tasks.getByName<BootJar>("bootJar") {
 
 tasks.getByName<Jar>("jar") {
     enabled = true
-    classifier = ""
+    classifier = "jar"
 }
 
 //configurations {
@@ -154,7 +154,7 @@ publishing {
             version = scmVersion.version
 
             artifact(project.tasks.jar) {
-                classifier = ""
+                classifier = "jar"
             }
 
             from(components["java"])
