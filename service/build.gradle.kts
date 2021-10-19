@@ -130,7 +130,8 @@ tasks.getByName<BootJar>("bootJar") {
 }
 
 tasks.getByName<Jar>("jar") {
-    enabled = false
+    enabled = true
+    classifier = ""
 }
 
 //configurations {
@@ -152,7 +153,7 @@ publishing {
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
-            artifact(project.tasks.bootJar)
+            artifact(project.tasks.jar)
 
             from(components["java"])
             pom {
