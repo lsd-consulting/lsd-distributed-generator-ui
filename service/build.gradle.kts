@@ -153,7 +153,9 @@ publishing {
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
-            artifact(project.tasks.jar)
+            artifact(project.tasks.jar) {
+                classifier = ""
+            }
 
             from(components["java"])
             pom {
