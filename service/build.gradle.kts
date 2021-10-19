@@ -141,6 +141,10 @@ tasks.getByName<Jar>("jar") {
 //    }
 //}
 
+project.tasks.publish {
+    dependsOn(project.tasks.bootJar)
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -148,7 +152,7 @@ publishing {
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
-            artifact("bootJar")
+            artifact(project.tasks.bootJar)
 
             from(components["java"])
             pom {
