@@ -148,15 +148,16 @@ project.tasks.publish {
 
 publishing {
     publications {
-        create<MavenPublication>("javaJar") {
-            artifact(tasks.getByName("jar"))
+        create<MavenPublication>("mavenJava") {
+//            artifact(tasks.getByName("jar"))
 //        }
 //        create<MavenPublication>("mavenJava") {
             groupId = "$group"
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
-//            artifact(tasks["jar"])
+            artifact(tasks["bootJar"])
+            artifact(tasks["jar"])
 
             from(components["java"])
             pom {
