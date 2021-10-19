@@ -129,10 +129,10 @@ tasks.getByName<BootJar>("bootJar") {
 //    this.archiveFileName.set("${rootProject.name}.${archiveExtension.get()}")
 }
 
-tasks.getByName<Jar>("jar") {
-    enabled = true
-    classifier = "jar"
-}
+//tasks.getByName<Jar>("jar") {
+//    enabled = true
+//    classifier = ""
+//}
 
 //configurations {
 //     https://stackoverflow.com/questions/61197984/bootjar-mavenjar-artifact-wasnt-produced-by-this-build
@@ -154,7 +154,7 @@ publishing {
             version = scmVersion.version
 
             artifact(project.tasks.jar) {
-                classifier = "jar"
+//                classifier = ""
             }
 
             from(components["java"])
