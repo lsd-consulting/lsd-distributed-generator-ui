@@ -129,10 +129,10 @@ tasks.getByName<BootJar>("bootJar") {
 //    this.archiveFileName.set("${rootProject.name}.${archiveExtension.get()}")
 }
 
-//tasks.getByName<Jar>("jar") {
-//    enabled = true
-//    classifier = ""
-//}
+tasks.getByName<Jar>("jar") {
+    enabled = true
+    classifier = ""
+}
 
 //configurations {
 //     https://stackoverflow.com/questions/61197984/bootjar-mavenjar-artifact-wasnt-produced-by-this-build
