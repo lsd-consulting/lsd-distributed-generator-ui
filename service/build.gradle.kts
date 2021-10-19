@@ -5,7 +5,7 @@ plugins {
     kotlin("plugin.spring")
     id("org.springframework.boot") version "2.5.5"
     `maven-publish`
-    id("java")
+    id("java-library")
     id("signing")
     id("pl.allegro.tech.build.axion-release")
 }
@@ -72,6 +72,7 @@ dependencies {
     api("io.github.lsd-consulting:lsd-core:0.1.32")
     api("io.github.lsd-consulting:lsd-distributed-generator:0.1.3")
     api("io.github.lsd-consulting:lsd-distributed-mongodb-access:0.1.3")
+    api("io.github.lsd-consulting:lsd-distributed-data-access:0.1.3")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -138,7 +139,7 @@ publishing {
             version = scmVersion.version
 
             artifact(project.tasks.bootJar)
-            artifact("build/libs/${project.name}-${version}-plain.jar")
+//            artifact("build/libs/${project.name}-${version}-plain.jar")
 
             from(components["java"])
             pom {
