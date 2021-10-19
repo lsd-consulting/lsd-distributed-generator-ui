@@ -11,6 +11,9 @@ plugins {
 }
 
 
+//apply(plugin = "org.springframework.boot")
+
+
 //////////////////////////
 // componentTest source set
 //////////////////////////
@@ -122,10 +125,13 @@ dependencies {
 
 tasks.getByName<BootJar>("bootJar") {
     enabled = true
+    classifier = "boot"
+//    this.archiveFileName.set("${rootProject.name}.${archiveExtension.get()}")
 }
 
 tasks.getByName<Jar>("jar") {
-    enabled = true
+    enabled = false
+    classifier = ""
 }
 
 publishing {
@@ -136,16 +142,14 @@ publishing {
             version = scmVersion.version
 
             from(components["java"])
-//            artifact(sourceJar)
-//            artifact(javadocJar)
             pom {
                 name.set("lsd-distributed-generator-ui")
                 description.set("This is the graphical interface providing the LSD generation functionality.")
                 url.set("https://github.com/lsd-consulting/lsd-distributed-generator-ui")
                 licenses {
                     license {
-                        name.set("The Apache Software License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        name.set("MIT License")
+                        url.set("https://github.com/lsd-consulting/lsd-distributed-generator-ui/blob/main/LICENSE.txt")
                         distribution.set("repo")
                     }
                 }
