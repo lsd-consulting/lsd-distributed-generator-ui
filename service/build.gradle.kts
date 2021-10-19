@@ -10,10 +10,6 @@ plugins {
     id("pl.allegro.tech.build.axion-release")
 }
 
-
-//apply(plugin = "org.springframework.boot")
-
-
 //////////////////////////
 // componentTest source set
 //////////////////////////
@@ -121,25 +117,13 @@ dependencies {
     componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
 }
 
-
-
-//configurations {
-//     https://stackoverflow.com/questions/61197984/bootjar-mavenjar-artifact-wasnt-produced-by-this-build
-//    [apiElements, runtimeElements].each {
-//        it.outgoing.artifacts.removeIf { it.buildDependencies.getDependencies(null).contains(jar) }
-//        it.outgoing.artifact(bootJar)
-//    }
-//}
-
 tasks.getByName<BootJar>("bootJar") {
     enabled = true
     classifier = "boot"
-//    this.archiveFileName.set("${rootProject.name}.${archiveExtension.get()}")
 }
 
 tasks.getByName<Jar>("jar") {
     enabled = true
-//    classifier = ""
 }
 
 project.tasks.publish {
@@ -153,9 +137,7 @@ publishing {
             artifactId = "lsd-distributed-generator-ui"
             version = scmVersion.version
 
-//            artifact(tasks["bootJar"])
-//            artifact("build/libs/${project.name}-${version}-plain.jar")
-//            artifact(tasks["jar"])
+            artifact(project.tasks.bootJar)
 
             from(components["java"])
             pom {
