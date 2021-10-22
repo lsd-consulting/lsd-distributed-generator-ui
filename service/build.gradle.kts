@@ -69,10 +69,10 @@ dependencies {
     }
 
     // LSD
-    api("io.github.lsd-consulting:lsd-core:0.1.32")
-    api("io.github.lsd-consulting:lsd-distributed-generator:0.1.5")
-    api("io.github.lsd-consulting:lsd-distributed-mongodb-access:0.1.4")
-    api("io.github.lsd-consulting:lsd-distributed-data-access:0.1.3")
+    implementation("io.github.lsd-consulting:lsd-core:0.1.32")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:0.1.5")
+    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:0.1.4")
+    implementation("io.github.lsd-consulting:lsd-distributed-data-access:0.1.3")
 
     //////////////////////////////////
     // Unit test dependencies
