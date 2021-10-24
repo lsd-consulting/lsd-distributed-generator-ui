@@ -29,7 +29,6 @@ val componentTest = task<Test>("componentTest") {
     testClassesDirs = sourceSets["componentTest"].output.classesDirs
     classpath = sourceSets["componentTest"].runtimeClasspath
     testLogging.showStandardStreams = true
-    systemProperty("lsd.core.report.outputDir", "$buildDir/reports/lsd")
     useJUnitPlatform()
     mustRunAfter(tasks["test"])
 }
@@ -99,9 +98,6 @@ dependencies {
     componentTestImplementation("io.cucumber:cucumber-java8:6.11.0") {
         because("we want to use Cucumber JVM")
     }
-    componentTestImplementation("io.cucumber:cucumber-java:6.11.0") {
-        because("we want to use Cucumber JVM")
-    }
     componentTestImplementation("io.cucumber:cucumber-junit-platform-engine:6.11.0") {
         because("we want to use Cucumber with JUnit 5")
     }
@@ -138,7 +134,6 @@ publishing {
             version = scmVersion.version
 
             artifact(project.tasks.bootJar)
-//            artifact("build/libs/${project.name}-${version}-plain.jar")
 
             from(components["java"])
             pom {

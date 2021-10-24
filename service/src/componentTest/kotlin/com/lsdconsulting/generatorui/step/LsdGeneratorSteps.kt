@@ -3,19 +3,14 @@ package com.lsdconsulting.generatorui.step
 import com.lsdconsulting.generatorui.LsdGeneratorUiApplication
 import com.lsdconsulting.generatorui.config.RepositoryConfig
 import com.lsdconsulting.generatorui.repository.TestRepository
-import io.cucumber.java.en.Then
 import io.cucumber.java8.En
 import io.cucumber.java8.HookNoArgsBody
 import io.cucumber.spring.CucumberContextConfiguration
 import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.access.model.Type
 import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
-//import io.lsdconsulting.lsd.distributed.captor.repository.InterceptedDocumentRepository
-//import io.lsdconsulting.lsd.distributed.captor.repository.model.InterceptedInteraction
-//import io.lsdconsulting.lsd.distributed.captor.repository.model.Type
 import org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric
 import org.apache.commons.lang3.RandomUtils.nextLong
-//import org.approvaltests.Approvals
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -93,15 +88,10 @@ class LsdGeneratorSteps(
             entity = testRestTemplate.getForEntity("/lsd/$traceId")
         }
 
-//        Then("the correct diagram is generated") {
-//        }
+        Then("the correct diagram is generated") {
+            // TODO("Add approval check")
+        }
 
         After(HookNoArgsBody { TestRepository.tearDownDatabase() })
-    }
-
-    @Then("the correct diagram is generated")
-    fun ddd() {
-        println(entity.body)
-//        Approvals.verify(entity.body)
     }
 }
