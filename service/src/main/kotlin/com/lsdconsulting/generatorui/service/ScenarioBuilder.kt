@@ -46,7 +46,7 @@ class ScenarioBuilder(
                     .participants(participants)
                     .includes(setOf())
                     .build()
-                    .diagram(20)
+                    .diagram(300)
                     .orElse(null)
             )
             .componentDiagram(
