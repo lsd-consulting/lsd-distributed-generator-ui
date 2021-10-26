@@ -1,8 +1,6 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.ParticipantType
-import com.lsd.ParticipantType.ACTOR
-import com.lsd.ParticipantType.PARTICIPANT
+import com.lsd.ParticipantType.*
 import com.lsd.events.Message
 import com.lsd.events.SequenceEvent
 import com.lsd.events.SynchronousResponse
@@ -28,25 +26,38 @@ class LsdGenerator(
     }
 
     private fun generateParticipants(events: MutableList<SequenceEvent>): LinkedHashSet<Participant> {
+        val participantNames = mutableSetOf<String>()
         val participants = linkedSetOf<Participant>()
         events.forEach {
             if (it is Message && it !is SynchronousResponse) {
                 when (it.label) {
                     "publish event" -> {
-                        participants.add(PARTICIPANT.called(it.from))
-                        participants.add(ParticipantType.ENTITY.called(it.to))
+                        addToParticipants(participantNames, it.from, participants, PARTICIPANT.called(it.from))
+                        addToParticipants(participantNames, it.to, participants, ENTITY.called(it.to))
                     }
                     "consume message" -> {
-                        participants.add(PARTICIPANT.called(it.to))
-                        participants.add(ParticipantType.ENTITY.called(it.from))
+                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to))
+                        addToParticipants(participantNames, it.from, participants, ENTITY.called(it.from))
                     }
                     else -> {
-                        participants.add(if (participants.isEmpty()) ACTOR.called(it.from) else PARTICIPANT.called(it.from))
-                        participants.add(PARTICIPANT.called(it.to))
+                        addToParticipants(participantNames, it.from, participants, if (participants.isEmpty()) ACTOR.called(it.from) else PARTICIPANT.called(it.from))
+                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to))
                     }
                 }
             }
         }
         return participants
+    }
+
+    private fun addToParticipants(
+        participantNames: MutableSet<String>,
+        participantName: String,
+        participants: LinkedHashSet<Participant>,
+        participant: Participant
+    ) {
+        if (!participantNames.contains(participantName)) {
+            participants.add(participant)
+            participantNames.add(participantName)
+        }
     }
 }
