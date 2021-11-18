@@ -68,8 +68,8 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-core:0.1.32")
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:0.1.6")
+    implementation("io.github.lsd-consulting:lsd-core:0.2.0")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.0.2")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -81,7 +81,7 @@ dependencies {
     // Component test dependencies
     componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    componentTestImplementation("io.github.lsd-consulting:lsd-cucumber:0.1.1") {
+    componentTestImplementation("io.github.lsd-consulting:lsd-cucumber:0.1.4") {
         // TODO Probably should be removed
         because("we want to include the Cucumber scenarios in the LSDs")
     }
