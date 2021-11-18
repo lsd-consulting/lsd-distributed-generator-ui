@@ -1,3 +1,3 @@
-rootProject.name = "lsd-generator-ui"
+rootProject.name = "lsd-distributed-generator-ui"
 
 include("service")
