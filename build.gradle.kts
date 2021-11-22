@@ -39,7 +39,7 @@ allprojects {
         mavenCentral()
     }
 
-    extra["springCloudVersion"] = "2020.0.3"
+    extra["springCloudVersion"] = "2020.0.4"
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
