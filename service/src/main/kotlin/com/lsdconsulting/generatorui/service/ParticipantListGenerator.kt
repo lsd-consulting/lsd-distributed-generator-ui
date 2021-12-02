@@ -15,7 +15,7 @@ class ParticipantListGenerator {
         val participants = linkedSetOf<Participant>()
         events.forEach {
             if (it is Message && it !is SynchronousResponse) {
-                when (it.label) {
+                when (it.label.lowercase()) {
                     "publish event" -> {
                         addToParticipants(participantNames, it.from, participants, ParticipantType.PARTICIPANT.called(it.from))
                         addToParticipants(participantNames, it.to, participants, ParticipantType.ENTITY.called(it.to))
