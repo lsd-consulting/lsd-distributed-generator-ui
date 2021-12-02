@@ -7,11 +7,12 @@ plugins {
     `maven-publish`
     id("java-library")
     id("signing")
+    id("jacoco")
     id("pl.allegro.tech.build.axion-release")
 }
 
 //////////////////////////
-// componentTest source set
+// componentTest settings
 //////////////////////////
 
 sourceSets.create("componentTest") {
@@ -31,6 +32,7 @@ val componentTest = task<Test>("componentTest") {
     testLogging.showStandardStreams = true
     useJUnitPlatform()
     mustRunAfter(tasks["test"])
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 val componentTestImplementation: Configuration by configurations.getting {
@@ -43,6 +45,16 @@ val componentTestRuntimeOnly: Configuration by configurations.getting {
 configurations["componentTestImplementation"].extendsFrom(configurations.runtimeOnly.get())
 
 tasks.check { dependsOn(componentTest) }
+
+//////////////////////////
+// unit test settings
+//////////////////////////
+
+tasks {
+    test {
+        useJUnitPlatform()
+    }
+}
 
 //////////////////////////
 // dependencies
@@ -85,6 +97,8 @@ dependencies {
         because("we want to assert nicely")
     }
     testImplementation("org.apache.commons:commons-lang3:3.12.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation("org.junit.platform:junit-platform-commons:1.8.2")
 
     //////////////////////////////////
     // Component test dependencies
@@ -119,6 +133,29 @@ dependencies {
 
     componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
 }
+
+//////////////////////////
+// Jacoco
+//////////////////////////
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+tasks.jacocoTestReport {
+    executionData(
+        file("${project.buildDir}/jacoco/componentTest.exec")
+    )
+    reports {
+        xml.isEnabled = true
+        html.isEnabled = true
+        html.setDestination(project.provider { File("${project.buildDir}/reports/coverage") })
+    }
+}
+
+//////////////////////////
+// publishing
+//////////////////////////
 
 tasks.getByName<BootJar>("bootJar") {
     enabled = true
