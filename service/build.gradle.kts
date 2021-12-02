@@ -77,6 +77,15 @@ dependencies {
         because("we want to use JUnit 5")
     }
 
+    testImplementation("io.mockk:mockk:1.12.1") {
+        because("we want to mock objects")
+    }
+
+    testImplementation("com.natpryce:hamkrest:1.8.0.1") {
+        because("we want to assert nicely")
+    }
+    testImplementation("org.apache.commons:commons-lang3:3.12.0")
+
     //////////////////////////////////
     // Component test dependencies
     componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -108,7 +117,6 @@ dependencies {
         because("we want to see useful Cucumber reports")
     }
 
-//    componentTestImplementation("com.approvaltests:approvaltests:11.7.0")
     componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
 }
 
