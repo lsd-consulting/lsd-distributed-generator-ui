@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
-class LsdController(val lsdGenerator: LsdGenerator) {
+class LsdController(private val lsdGenerator: LsdGenerator) {
 
     @GetMapping("/lsd/{traceId}")
     @ResponseBody
