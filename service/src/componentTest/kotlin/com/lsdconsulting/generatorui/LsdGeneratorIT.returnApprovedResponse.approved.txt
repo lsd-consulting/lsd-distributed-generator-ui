@@ -75,8 +75,7 @@ participant Target
 Source -&gt; Target: &lt;text fill=&quot;&quot;&gt;[[#1 {GET /path} GET /path]]&lt;/text&gt;
 Target --&gt;&gt; Source: &lt;text fill=&quot;&quot;&gt;[[#2 {sync 200 response (25 ms)} sync 200 response (25 ms)]]&lt;/text&gt;
 
-@enduml
-</code></pre>
+@enduml</code></pre>
                     </div>
                 </div>
             </div>
@@ -92,25 +91,19 @@ Target --&gt;&gt; Source: &lt;text fill=&quot;&quot;&gt;[[#2 {sync 200 response 
                     <sup>[Requires Graphviz to be installed]</sup>
                     <pre><?xml version="1.0" encoding="UTF-8"?>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="201px" preserveAspectRatio="none" style="width:104px;height:201px;background:#00000000;" version="1.1" viewBox="0 0 104 201" width="104px" zoomAndPan="magnify">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="176px" preserveAspectRatio="none" style="width:104px;height:176px;background:#00000000;" version="1.1" viewBox="0 0 104 176" width="104px" zoomAndPan="magnify">
   <defs/>
   <g>
-    <!--MD5=[c8da82a3e4fd5c54db14ac48b9861466]
-entity Source-->
-    <ellipse cx="55" cy="19" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/>
-    <path d="M55,27 L55,54 M42,35 L68,35 M55,54 L42,69 M55,54 L68,69 " fill="none" style="stroke:#000000;stroke-width:1.0;"/>
-    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="48" x="31" y="85.0752">Source</text>
-    <!--MD5=[e8ac750432e285bbdda6323fc8ccd237]
-entity Target-->
-    <rect fill="#FFFFFF" height="47.0146" style="stroke:#000000;stroke-width:1.0;" width="86" x="12" y="148"/>
-    <rect fill="#FFFFFF" height="10" style="stroke:#000000;stroke-width:1.0;" width="15" x="78" y="153"/>
-    <rect fill="#FFFFFF" height="2" style="stroke:#000000;stroke-width:1.0;" width="4" x="76" y="155"/>
-    <rect fill="#FFFFFF" height="2" style="stroke:#000000;stroke-width:1.0;" width="4" x="76" y="159"/>
-    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="46" x="27" y="182.0752">Target</text>
-    <!--MD5=[28b5bf4fb8b8c8d9ce48c2b79524ead3]
-link Source to Target-->
-    <path d="M55,88.13 C55,105.72 55,126.24 55,142.39 " fill="none" id="Source-to-Target" style="stroke:#000000;stroke-width:1.0;"/>
-    <polygon fill="#000000" points="55,147.69,59,138.69,55,142.69,51,138.69,55,147.69" style="stroke:#000000;stroke-width:1.0;"/>
+    <ellipse cx="55" cy="18.5752" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/>
+    <path d="M55,26.5752 L55,53.5752 M42,34.5752 L68,34.5752 M55,53.5752 L42,68.5752 M55,53.5752 L68,68.5752 " fill="none" style="stroke:#000000;stroke-width:1.0;"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="48" x="31" y="84.6504">Source</text>
+    <rect fill="#FFFFFF" height="47.0146" style="stroke:#000000;stroke-width:1.0;" width="86" x="12" y="123.5752"/>
+    <rect fill="#FFFFFF" height="10" style="stroke:#000000;stroke-width:1.0;" width="15" x="78" y="128.5752"/>
+    <rect fill="#FFFFFF" height="2" style="stroke:#000000;stroke-width:1.0;" width="4" x="76" y="130.5752"/>
+    <rect fill="#FFFFFF" height="2" style="stroke:#000000;stroke-width:1.0;" width="4" x="76" y="134.5752"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="46" x="27" y="157.6504">Target</text>
+    <path d="M55,87.7146 C55,99.8315 55,112.8392 55,123.4921 " fill="none" style="stroke:#000000;stroke-width:1.0;"/>
+    <polygon fill="#000000" points="55,123.4921,59,114.4921,55,118.4921,51,114.4921,55,123.4921" style="stroke:#000000;stroke-width:1.0;"/>
   </g>
 </svg>
 </pre>
@@ -126,7 +119,7 @@ link Source to Target-->
                 <a class="close" href="#5">&times;</a><!--show previous popup on close-->
                 <div class="content">
                     <pre><code id="component_uml_code5">@startuml
-
+!pragma layout smetana
 !theme plain
 skinparam backgroundColor transparent
 
@@ -135,9 +128,8 @@ component Target
 
 [Source] --&gt; Target
 
-hide @unlinked
-@enduml
-</code></pre>
+remove @unlinked
+@enduml</code></pre>
                 </div>
             </div>
         </div>

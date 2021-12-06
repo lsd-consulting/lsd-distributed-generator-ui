@@ -13,7 +13,7 @@ class HtmlReportRenderer {
     private val engine: PebbleEngine = PebbleEngine.Builder()
         .extension(LsdPebbleExtension())
         .build()
-    private val compiledTemplate: PebbleTemplate = engine.getTemplate("templates/html-report.peb")
+    private val compiledTemplate: PebbleTemplate = engine.getTemplate("templates/custom-html-report.peb")
 
     fun render(scenario: Scenario): String {
         val writer: Writer = StringWriter()
