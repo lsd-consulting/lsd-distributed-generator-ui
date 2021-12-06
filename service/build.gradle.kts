@@ -81,7 +81,7 @@ dependencies {
 
     // LSD
     implementation("io.github.lsd-consulting:lsd-core:0.2.0")
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.0.3")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.0.7")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -104,11 +104,6 @@ dependencies {
     // Component test dependencies
     componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    componentTestImplementation("io.github.lsd-consulting:lsd-cucumber:0.1.6") {
-        // TODO Probably should be removed
-        because("we want to include the Cucumber scenarios in the LSDs")
-    }
-
     // JUnit 5
     componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1") {
         because("we want to use JUnit 5")
@@ -117,20 +112,7 @@ dependencies {
         because("we want to run parameterised tests")
     }
 
-    // Cucumber
-    componentTestImplementation("io.cucumber:cucumber-java8:6.11.0") {
-        because("we want to use Cucumber JVM")
-    }
-    componentTestImplementation("io.cucumber:cucumber-junit-platform-engine:6.11.0") {
-        because("we want to use Cucumber with JUnit 5")
-    }
-    componentTestImplementation("io.cucumber:cucumber-spring:6.11.0") {
-        because("we want to use dependency injection in our Cucumber tests")
-    }
-    componentTestImplementation("de.monochromata.cucumber:reporting-plugin:4.0.103") {
-        because("we want to see useful Cucumber reports")
-    }
-
+    componentTestImplementation("com.approvaltests:approvaltests:12.3.1")
     componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
 }
 

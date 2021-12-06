@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
+<head>
+    <title>Diagram for traceIds: someTraceId</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main role="main">
+    <h1 class="logo">LSD</h1>
+    <h1>Diagram for traceIds: someTraceId</h1>
+    <article id="3">
+                <aside class="facts">
+            <div class="factTable">
+                <h3>Key Facts</h3>
+                <div class="factRow">
+                    <div class="factRowHead">Description</div>
+                    <div class="factRowHead">Value</div>
+                </div>
+                                <div class="factRow">
+                    <div class="factCell">traceIds</div>
+                    <div class="factCell">someTraceId</div>
+                </div>
+                            </div>
+        </aside>
+        <section class="sequence diagram svg ">
+            <h3 class="">Sequence Diagram</h3>
+            <pre><?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="244px" preserveAspectRatio="none" style="width:279px;height:244px;background:#00000000;" version="1.1" viewBox="0 0 279 244" width="279px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="37" x2="37" y1="83.0146" y2="162.6133"/>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="243" x2="243" y1="83.0146" y2="162.6133"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="48" x="10" y="80.0752">Source</text>
+    <ellipse cx="37" cy="14" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/>
+    <path d="M37,22 L37,49 M24,30 L50,30 M37,49 L24,64 M37,49 L50,64 " fill="none" style="stroke:#000000;stroke-width:1.0;"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="48" x="10" y="175.6885">Source</text>
+    <ellipse cx="37" cy="187.6279" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/>
+    <path d="M37,195.6279 L37,222.6279 M24,203.6279 L50,203.6279 M37,222.6279 L24,237.6279 M37,222.6279 L50,237.6279 " fill="none" style="stroke:#000000;stroke-width:1.0;"/>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="60" x="213" y="51"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="46" x="220" y="72.0752">Target</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="60" x="213" y="161.6133"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="46" x="220" y="182.6885">Target</text>
+    <polygon fill="#000000" points="231,110.814,241,114.814,231,118.814,235,114.814" style="stroke:#000000;stroke-width:1.0;"/>
+    <line style="stroke:#000000;stroke-width:1.0;" x1="37" x2="237" y1="114.814" y2="114.814"/>
+    <a href="#1" target="_top" title="GET /path" xlink:actuate="onRequest" xlink:href="#1" xlink:show="new" xlink:title="GET /path" xlink:type="simple">
+      <text fill="" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="66" x="44" y="110.0845">GET /path</text>
+    </a>
+    <line style="stroke:#000000;stroke-width:1.0;" x1="37" x2="47" y1="144.6133" y2="140.6133"/>
+    <line style="stroke:#000000;stroke-width:1.0;" x1="37" x2="47" y1="144.6133" y2="148.6133"/>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="37" x2="242" y1="144.6133" y2="144.6133"/>
+    <a href="#2" target="_top" title="sync 200 response (25 ms)" xlink:actuate="onRequest" xlink:href="#2" xlink:show="new" xlink:title="sync 200 response (25 ms)" xlink:type="simple">
+      <text fill="" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="182" x="54" y="139.8838">sync 200 response (25 ms)</text>
+    </a>
+  </g>
+</svg>
+</pre>
+            <div onclick="location.href='#!';" id="4" class="overlay">
+                <div class="popup" onclick="event.stopPropagation();">
+                    <h2>PlantUml markup</h2>
+                    <span class="copy" title="copy" onclick="copyToClipboard('sequence_uml_code4')"></span>
+                    <a class="close" href="#!">&times;</a>
+                    <div class="content">
+                        <pre><code id="sequence_uml_code4">@startuml
+
+!theme plain
+skinparam backgroundColor transparent
+
+hide unlinked
+
+
+actor Source
+participant Target
+
+Source -&gt; Target: &lt;text fill=&quot;&quot;&gt;[[#1 {GET /path} GET /path]]&lt;/text&gt;
+Target --&gt;&gt; Source: &lt;text fill=&quot;&quot;&gt;[[#2 {sync 200 response (25 ms)} sync 200 response (25 ms)]]&lt;/text&gt;
+
+@enduml
+</code></pre>
+                    </div>
+                </div>
+            </div>
+            <sub><a href="#4">[source]</a></sub>
+            <sub><a href="#5">[component diagram]</a></sub>
+        </section>
+        <!-- Popup for component diagram -->
+        <div onclick="location.href='#!';" id="5" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>Component Diagram</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <sup>[Requires Graphviz to be installed]</sup>
+                    <pre><?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="201px" preserveAspectRatio="none" style="width:104px;height:201px;background:#00000000;" version="1.1" viewBox="0 0 104 201" width="104px" zoomAndPan="magnify">
+  <defs/>
+  <g>
+    <!--MD5=[c8da82a3e4fd5c54db14ac48b9861466]
+entity Source-->
+    <ellipse cx="55" cy="19" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/>
+    <path d="M55,27 L55,54 M42,35 L68,35 M55,54 L42,69 M55,54 L68,69 " fill="none" style="stroke:#000000;stroke-width:1.0;"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="48" x="31" y="85.0752">Source</text>
+    <!--MD5=[e8ac750432e285bbdda6323fc8ccd237]
+entity Target-->
+    <rect fill="#FFFFFF" height="47.0146" style="stroke:#000000;stroke-width:1.0;" width="86" x="12" y="148"/>
+    <rect fill="#FFFFFF" height="10" style="stroke:#000000;stroke-width:1.0;" width="15" x="78" y="153"/>
+    <rect fill="#FFFFFF" height="2" style="stroke:#000000;stroke-width:1.0;" width="4" x="76" y="155"/>
+    <rect fill="#FFFFFF" height="2" style="stroke:#000000;stroke-width:1.0;" width="4" x="76" y="159"/>
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="46" x="27" y="182.0752">Target</text>
+    <!--MD5=[28b5bf4fb8b8c8d9ce48c2b79524ead3]
+link Source to Target-->
+    <path d="M55,88.13 C55,105.72 55,126.24 55,142.39 " fill="none" id="Source-to-Target" style="stroke:#000000;stroke-width:1.0;"/>
+    <polygon fill="#000000" points="55,147.69,59,138.69,55,142.69,51,138.69,55,147.69" style="stroke:#000000;stroke-width:1.0;"/>
+  </g>
+</svg>
+</pre>
+                </div>
+                <sub><a href="#uml5">[source]</a></sub>
+            </div>
+        </div>
+        <!-- Popup for component diagram UML via component diagram popup -->
+        <div onclick="location.href='#!';" id="uml5" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>PlantUml markup</h2>
+                <span class="copy" title="copy" onclick="copyToClipboard('component_uml_code5')"></span>
+                <a class="close" href="#5">&times;</a><!--show previous popup on close-->
+                <div class="content">
+                    <pre><code id="component_uml_code5">@startuml
+
+!theme plain
+skinparam backgroundColor transparent
+
+actor Source
+component Target
+
+[Source] --&gt; Target
+
+hide @unlinked
+@enduml
+</code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Section containing data for sequence diagram popups -->
+                <div onclick="location.href='#!';" id="1" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>GET /path</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>{
+  "requestHeaders": {
+    "header": [ "value" ]
+  },
+  "body": "someBody"
+}</pre>
+                </div>
+            </div>
+        </div>
+                <div onclick="location.href='#!';" id="2" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>sync 200 response (25 ms)</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>{
+  "responseHeaders": {
+    "header": [ "value" ]
+  },
+  "body": "someBody"
+}</pre>
+                </div>
+            </div>
+        </div>
+                </article>
+</main>
+</body>
+<footer>
+    <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/styles/default.min.css">
+    <script src="/custom.js"></script>
+    <script type = "text/javascript">
+        addSliderForSvgZoom();
+        highlightLifelinesWhenClicked();
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
+    <script type = "text/javascript">
+        highlightKeywords();                        highlightFact("3", "someTraceId");
+                        unMarkSvg();
+    </script>
+</footer>
+</html>
