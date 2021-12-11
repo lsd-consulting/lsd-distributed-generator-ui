@@ -80,8 +80,8 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-core:0.2.0")
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.0.7")
+    implementation("io.github.lsd-consulting:lsd-core:1.0.2")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.0")
 
     //////////////////////////////////
     // Unit test dependencies

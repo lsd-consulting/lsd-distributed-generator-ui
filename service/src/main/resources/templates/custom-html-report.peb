@@ -8,6 +8,9 @@
 <main role="main">
     <h1 class="logo">LSD</h1>
     <h1>{{ scenario.title }}</h1>
+    <h4>Timeframe of the captured interactions:</h4>
+    <h4>{# @pebvariable name="startTime" type="java.time.ZonedDateTime" #}{{ startTime }} -
+            {# @pebvariable name="finishTime" type="java.time.ZonedDateTime" #}{{ finishTime }}</h4>
     <article id="{{ scenario.id }}">
         {% if scenario.facts.entries is not empty %}
         <aside class="facts">

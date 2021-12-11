@@ -8,6 +8,9 @@
 <main role="main">
     <h1 class="logo">LSD</h1>
     <h1>Diagram for traceIds: someTraceId</h1>
+    <h4>Timeframe of the captured interactions:</h4>
+    <h4>1970-01-01T00:00Z[UTC] -
+            1970-01-01T00:00Z[UTC]</h4>
     <article id="3">
                 <aside class="facts">
             <div class="factTable">
