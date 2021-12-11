@@ -88,6 +88,6 @@ class LsdGeneratorIT {
 
         val entity: ResponseEntity<String> = testRestTemplate.getForEntity("/lsd/$traceId")
 
-        Approvals.verify(entity.body)
+        Approvals.verify(entity.body, "html")
     }
 }
