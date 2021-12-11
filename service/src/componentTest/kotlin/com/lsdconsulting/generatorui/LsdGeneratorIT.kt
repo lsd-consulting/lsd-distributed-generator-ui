@@ -1,6 +1,7 @@
 package com.lsdconsulting.generatorui
 
 import com.lsdconsulting.generatorui.config.RepositoryConfig
+import com.lsdconsulting.generatorui.config.logger.log
 import com.lsdconsulting.generatorui.repository.TestRepository
 import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.access.model.Type.REQUEST
@@ -88,6 +89,7 @@ class LsdGeneratorIT {
 
         val entity: ResponseEntity<String> = testRestTemplate.getForEntity("/lsd/$traceId")
 
-        Approvals.verify(entity.body, "html")
+        log().info(entity.body)
+        Approvals.verifyHtml(entity.body)
     }
 }
