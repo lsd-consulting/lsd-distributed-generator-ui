@@ -17,8 +17,6 @@ class TestRepository {
     companion object {
         private const val MONGODB_HOST = "localhost"
         private const val MONGODB_PORT = 27017
-        private const val DATABASE_NAME = "lsd"
-        private const val COLLECTION_NAME = "interceptedInteraction"
         private lateinit var mongoClient: MongoClient
         private lateinit var mongodExecutable: MongodExecutable
 
