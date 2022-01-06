@@ -47,3 +47,5 @@ $RECYCLE.BIN/
 
 ### Other ###
 *.swp
+*.received.txt
+

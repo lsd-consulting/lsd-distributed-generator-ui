@@ -72,22 +72,24 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("io.pebbletemplates:pebble:3.1.5")
-    implementation("org.apache.httpcomponents:httpcore:4.4.14") {
+    implementation("org.apache.httpcomponents:httpcore:4.4.15") {
         because("it's needed for DB connection security")
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-core:0.2.0")
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.0.3")
+    implementation("io.github.lsd-consulting:lsd-core:1.0.3")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.0")
 
     //////////////////////////////////
     // Unit test dependencies
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1") {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2") {
         because("we want to use JUnit 5")
     }
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation("org.junit.platform:junit-platform-commons:1.8.2")
 
     testImplementation("io.mockk:mockk:1.12.1") {
         because("we want to mock objects")
@@ -97,41 +99,18 @@ dependencies {
         because("we want to assert nicely")
     }
     testImplementation("org.apache.commons:commons-lang3:3.12.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
-    testImplementation("org.junit.platform:junit-platform-commons:1.8.2")
 
     //////////////////////////////////
     // Component test dependencies
     componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    componentTestImplementation("io.github.lsd-consulting:lsd-cucumber:0.1.6") {
-        // TODO Probably should be removed
-        because("we want to include the Cucumber scenarios in the LSDs")
-    }
-
-    // JUnit 5
-    componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1") {
+    componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2") {
         because("we want to use JUnit 5")
     }
-    componentTestImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1") {
-        because("we want to run parameterised tests")
+    componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.2.4") {
+        because("we want to run tests against a database")
     }
-
-    // Cucumber
-    componentTestImplementation("io.cucumber:cucumber-java8:6.11.0") {
-        because("we want to use Cucumber JVM")
-    }
-    componentTestImplementation("io.cucumber:cucumber-junit-platform-engine:6.11.0") {
-        because("we want to use Cucumber with JUnit 5")
-    }
-    componentTestImplementation("io.cucumber:cucumber-spring:6.11.0") {
-        because("we want to use dependency injection in our Cucumber tests")
-    }
-    componentTestImplementation("de.monochromata.cucumber:reporting-plugin:4.0.103") {
-        because("we want to see useful Cucumber reports")
-    }
-
-    componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
+    componentTestImplementation("com.approvaltests:approvaltests:12.4.1")
 }
 
 //////////////////////////

@@ -14,10 +14,10 @@ class LsdGenerator(
     fun captureInteractionsFromDatabase(vararg traceIds: String): String {
         val traceIdToColourMap: HashMap<String, Optional<String>> = HashMap()
         traceIds.forEach { x: String -> traceIdToColourMap[x] = Optional.empty() }
-        val events = interactionGenerator.generate(traceIdToColourMap)
-        val participants = participantListGenerator.generateParticipants(events)
+        val eventContainer = interactionGenerator.generate(traceIdToColourMap)
+        val participants = participantListGenerator.generateParticipants(eventContainer.events)
         val title = "Diagram for traceIds: ${traceIds.asList().joinToString()}"
-        val scenario = scenarioBuilder.build(title = title, events = events, traceIds = traceIds.asList(), participants = participants.toList())
-        return htmlReportRenderer.render(scenario)
+        val scenario = scenarioBuilder.build(title = title, events = eventContainer.events, traceIds = traceIds.asList(), participants = participants.toList())
+        return htmlReportRenderer.render(scenario = scenario, startTime = eventContainer.startTime, finishTime = eventContainer.finishTime)
     }
 }

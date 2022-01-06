@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
 <head>
     <title>{# @pebvariable name="scenario" type="com.lsd.report.model.Scenario" #}{{scenario.title}}</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://gitcdn.link/cdn/lsd-consulting/lsd-core/main/src/main/resources/static/style.css">
 </head>
 <body>
 <main role="main">
     <h1 class="logo">LSD</h1>
     <h1>{{ scenario.title }}</h1>
+    <p>Timeframe: {# @pebvariable name="startTime" type="java.time.ZonedDateTime" #}{{ startTime }} - {# @pebvariable name="finishTime" type="java.time.ZonedDateTime" #}{{ finishTime }}</p>
     <article id="{{ scenario.id }}">
         {% if scenario.facts.entries is not empty %}
         <aside class="facts">
@@ -49,7 +50,6 @@
                 <h2>Component Diagram</h2>
                 <a class="close" href="#!">&times;</a>
                 <div class="content">
-                    <sup>[Requires Graphviz to be installed]</sup>
                     <pre>{{ scenario.componentDiagram.svg | raw }}</pre>
                 </div>
                 <sub><a href="#uml{{scenario.componentDiagram.id}}">[source]</a></sub>
@@ -85,7 +85,7 @@
 <footer>
     <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/styles/default.min.css">
-    <script src="/custom.js"></script>
+    <script src="https://gitcdn.link/cdn/lsd-consulting/lsd-core/main/src/main/resources/static/custom.js"></script>
     <script type = "text/javascript">
         addSliderForSvgZoom();
         highlightLifelinesWhenClicked();
