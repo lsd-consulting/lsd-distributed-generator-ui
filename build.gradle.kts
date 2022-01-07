@@ -25,11 +25,10 @@ tasks.create("installGitHooks") {
     }
 }
 
+// TODO Not sure all this is needed here or only in the file one level below
 group = "io.github.lsd-consulting"
-version = gitVersion().replaceAll("^v", "")
-
-rootProject.version = scmVersion.version
-println("Build Version = ${project.version}")
+val gitVersion: groovy.lang.Closure<String> by extra
+version = gitVersion().replace(Regex("^v"), "")
 
 configurations {
     compileOnly {
