@@ -80,7 +80,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-core:1.0.3")
+    implementation("io.github.lsd-consulting:lsd-core:1.0.4")
     implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.0")
 
     //////////////////////////////////
