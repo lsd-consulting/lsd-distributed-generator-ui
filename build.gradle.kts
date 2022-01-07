@@ -9,7 +9,7 @@ plugins {
     java
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("pl.allegro.tech.build.axion-release") version "1.13.4"
+    id("com.palantir.git-version") version "0.12.3"
 }
 
 nexusPublishing.repositories.sonatype {
@@ -17,7 +17,17 @@ nexusPublishing.repositories.sonatype {
     snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
 }
 
+tasks.create("installGitHooks") {
+    shouldRunAfter("clean")
+    println("-- Configuring git to use .githooks --")
+    project.exec {
+        commandLine("git", "config", "core.hooksPath", ".githooks")
+    }
+}
+
 group = "io.github.lsd-consulting"
+version = gitVersion().replaceAll("^v", "")
+
 rootProject.version = scmVersion.version
 println("Build Version = ${project.version}")
 
