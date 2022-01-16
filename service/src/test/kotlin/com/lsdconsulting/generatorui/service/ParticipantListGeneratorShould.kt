@@ -1,8 +1,6 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.events.Message
-import com.lsd.events.SequenceEvent
-import com.lsd.events.SynchronousResponse
+import com.lsd.events.*
 import com.lsd.report.model.Participant
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
@@ -81,6 +79,72 @@ internal class ParticipantListGeneratorShould {
             .label(randomAlphanumeric(30))
             .build()
         val events = mutableListOf<SequenceEvent>(request1, request2, response1, response2)
+
+        val result = underTest.generateParticipants(events)
+
+        assertThat(result, hasSize(equalTo(3)))
+        assertThat(result, hasElement(Participant("actor Participant1")))
+        assertThat(result, hasElement(Participant("participant Participant2")))
+        assertThat(result, hasElement(Participant("participant Participant3")))
+    }
+
+    @Test
+    fun `ignore synchronous response messages`() {
+        val request1 = Message.builder()
+            .from("Participant1")
+            .to("Participant2")
+            .label(randomAlphanumeric(30))
+            .build()
+        val request2 = Message.builder()
+            .from("Participant2")
+            .to("Participant3")
+            .label(randomAlphanumeric(30))
+            .build()
+        val response1 = SynchronousResponse.builder()
+            .from(randomAlphanumeric(10))
+            .to(randomAlphanumeric(10))
+            .label(randomAlphanumeric(30))
+            .build()
+        val response2 = SynchronousResponse.builder()
+            .from(randomAlphanumeric(10))
+            .to(randomAlphanumeric(10))
+            .label(randomAlphanumeric(30))
+            .build()
+        val events = mutableListOf<SequenceEvent>(request1, request2, response1, response2)
+
+        val result = underTest.generateParticipants(events)
+
+        assertThat(result, hasSize(equalTo(3)))
+        assertThat(result, hasElement(Participant("actor Participant1")))
+        assertThat(result, hasElement(Participant("participant Participant2")))
+        assertThat(result, hasElement(Participant("participant Participant3")))
+    }
+
+    @Test
+    fun `ignore non-message events`() {
+        val request1 = Message.builder()
+            .from("Participant1")
+            .to("Participant2")
+            .label(randomAlphanumeric(30))
+            .build()
+        val request2 = Message.builder()
+            .from("Participant2")
+            .to("Participant3")
+            .label(randomAlphanumeric(30))
+            .build()
+        val markup = Markup(randomAlphanumeric(10))
+        val noteLeft = NoteLeft(randomAlphanumeric(10))
+        val shortMessageInbound = ShortMessageInbound.builder()
+            .id(randomAlphanumeric(10))
+            .to(randomAlphanumeric(10))
+            .label(randomAlphanumeric(30))
+            .build()
+        val shortMessageOutbound = ShortMessageOutbound.builder()
+            .id(randomAlphanumeric(10))
+            .from(randomAlphanumeric(10))
+            .label(randomAlphanumeric(30))
+            .build()
+        val events = mutableListOf<SequenceEvent>(request1, request2, markup, noteLeft, shortMessageInbound, shortMessageOutbound)
 
         val result = underTest.generateParticipants(events)
 
