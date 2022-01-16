@@ -8,7 +8,7 @@ plugins {
     id("java-library")
     id("signing")
     id("jacoco")
-    id("pl.allegro.tech.build.axion-release")
+    id("com.palantir.git-version")
 }
 
 //////////////////////////
@@ -155,7 +155,8 @@ publishing {
         create<MavenPublication>("mavenJava") {
             groupId = "$group"
             artifactId = "lsd-distributed-generator-ui"
-            version = scmVersion.version
+            version = rootProject.version.toString()
+
 
             artifact(project.tasks.bootJar)
 
@@ -202,5 +203,14 @@ publishing {
 }
 
 signing {
-    sign(publishing.publications["mavenJava"])
+    project.findProperty("signingKey")?.let {
+        // Use in-memory ascii-armored keys
+        val signingKey: String? by project
+        val signingPassword: String? by project
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign(tasks["stuffZip"])
+        sign(publishing.publications["mavenJava"])
+    } ?: run {
+        sign(publishing.publications["mavenJava"])
+    }
 }
