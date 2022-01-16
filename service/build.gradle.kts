@@ -154,7 +154,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             groupId = "$group"
-            artifactId = "lsd-distributed-generator-ui"
+            artifactId = rootProject.name
             version = rootProject.version.toString()
 
 

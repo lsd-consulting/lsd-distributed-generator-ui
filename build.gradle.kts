@@ -25,7 +25,6 @@ tasks.create("installGitHooks") {
     }
 }
 
-// TODO Not sure all this is needed here or only in the file one level below
 val gitVersion: groovy.lang.Closure<String> by extra
 version = gitVersion().replace(Regex("^v"), "")
 group = "io.github.lsd-consulting"
