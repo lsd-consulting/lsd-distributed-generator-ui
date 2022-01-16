@@ -26,9 +26,9 @@ tasks.create("installGitHooks") {
 }
 
 // TODO Not sure all this is needed here or only in the file one level below
-group = "io.github.lsd-consulting"
 val gitVersion: groovy.lang.Closure<String> by extra
 version = gitVersion().replace(Regex("^v"), "")
+group = "io.github.lsd-consulting"
 
 configurations {
     compileOnly {
@@ -37,7 +37,7 @@ configurations {
 }
 
 allprojects {
-    group = "io.github.lsd-consulting"
+    group = rootProject.group
     version = rootProject.version
 
     apply(plugin = "io.spring.dependency-management")

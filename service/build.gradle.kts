@@ -155,8 +155,8 @@ publishing {
         create<MavenPublication>("mavenJava") {
             groupId = "$group"
             artifactId = "lsd-distributed-generator-ui"
-            val gitVersion: groovy.lang.Closure<String> by extra
-            version = gitVersion().replace(Regex("^v"), "")
+            version = rootProject.version.toString()
+
 
             artifact(project.tasks.bootJar)
 
