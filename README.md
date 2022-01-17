@@ -6,4 +6,5 @@
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-distributed-generator-ui)
 ![Codecov](https://img.shields.io/codecov/c/github/lsd-consulting/lsd-distributed-generator-ui)
 
-This is the graphical interface providing the LSD generation functionality
+This is the graphical interface providing the LSD generation functionality.
+
