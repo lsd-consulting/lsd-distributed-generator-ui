@@ -2,10 +2,10 @@ package com.lsdconsulting.generatorui
 
 import com.lsdconsulting.generatorui.config.RepositoryConfig
 import com.lsdconsulting.generatorui.repository.TestRepository
+import io.lsdconsulting.lsd.distributed.access.model.InteractionType
+import io.lsdconsulting.lsd.distributed.access.model.InteractionType.REQUEST
+import io.lsdconsulting.lsd.distributed.access.model.InteractionType.RESPONSE
 import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
-import io.lsdconsulting.lsd.distributed.access.model.Type
-import io.lsdconsulting.lsd.distributed.access.model.Type.REQUEST
-import io.lsdconsulting.lsd.distributed.access.model.Type.RESPONSE
 import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
 import io.lsdconsulting.lsd.distributed.mongo.config.LibraryConfig
 import org.approvaltests.Approvals
@@ -70,7 +70,7 @@ class LsdGeneratorUiApproval(
 
     private fun buildInterceptedInteraction(
         status: String?,
-        type: Type
+        type: InteractionType
     ): InterceptedInteraction? = InterceptedInteraction.builder()
         .traceId(traceId)
         .body(body)
@@ -81,7 +81,7 @@ class LsdGeneratorUiApproval(
         .path("/path")
         .httpStatus(status)
         .httpMethod(httpMethod)
-        .type(type)
+        .interactionType(type)
         .profile(profile)
         .elapsedTime(elapsedTime)
         .createdAt(createdAt)
