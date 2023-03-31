@@ -2,8 +2,8 @@ package com.lsdconsulting.generatorui.service
 
 import com.lsd.core.IdGenerator
 import com.lsd.core.abbreviate
-import com.lsd.core.builders.ScenarioModelBuilder
-import com.lsd.core.builders.SequenceDiagramGeneratorBuilder
+import com.lsd.core.builders.ScenarioModelBuilder.Companion.scenarioModelBuilder
+import com.lsd.core.builders.SequenceDiagramGeneratorBuilder.Companion.sequenceDiagramGeneratorBuilder
 import com.lsd.core.diagram.ComponentDiagramGenerator
 import com.lsd.core.domain.Fact
 import com.lsd.core.domain.Message
@@ -25,30 +25,26 @@ class ScenarioBuilder(
         participants: List<Participant>
     ): ScenarioModel {
 
-        val facts = mutableListOf<Fact>()
-        facts.add(Fact("traceIds", traceIds.joinToString()))
-
-        return ScenarioModelBuilder.scenarioModelBuilder()
+        return scenarioModelBuilder()
             .id(idGenerator.next())
             .title(title)
-            .facts(facts)
+            .facts(listOf(Fact("traceIds", traceIds.joinToString())))
             .dataHolders(
                 events
                     .filterIsInstance<Message>()
-                    .map {                                    DataHolder(
-                        id = it.id,
-                        abbreviatedLabel = it.label.abbreviate(),
-                        data = it.data
-                    )
-
+                    .map {
+                        DataHolder(
+                            id = it.id,
+                            abbreviatedLabel = it.label.abbreviate(),
+                            data = it.data
+                        )
                     }
             )
             .sequenceDiagram(
-                SequenceDiagramGeneratorBuilder.sequenceDiagramGeneratorBuilder()
+                sequenceDiagramGeneratorBuilder()
                     .idGenerator(idGenerator)
                     .events(events)
                     .participants(participants)
-                    .includes(listOf())
                     .build()
                     .diagram(300)
             )

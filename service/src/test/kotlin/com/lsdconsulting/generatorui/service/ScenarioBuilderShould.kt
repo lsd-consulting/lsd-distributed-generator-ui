@@ -1,9 +1,12 @@
 package com.lsdconsulting.generatorui.service
 
 import com.lsd.core.IdGenerator
+import com.lsd.core.abbreviate
 import com.lsd.core.builders.MessageBuilder
+import com.lsd.core.domain.Fact
 import com.lsd.core.domain.NoteLeft
 import com.lsd.core.domain.NoteRight
+import com.lsd.core.report.model.DataHolder
 import com.natpryce.hamkrest.*
 import com.natpryce.hamkrest.assertion.assertThat
 import io.mockk.every
@@ -43,28 +46,38 @@ internal class ScenarioBuilderShould {
 
     @Test
     fun `generate scenario with traceIds as facts`() {
-        val result = underTest.build(title, mutableListOf(), listOf(traceId), listOf())
+        val result = underTest.build(
+            title = title,
+            events = mutableListOf(),
+            traceIds = listOf(traceId),
+            participants = listOf()
+        )
 
         assertThat(result.facts, hasSize(equalTo(1)))
-        assertThat(result.facts.first { it.equals("traceIds") }, equalTo(listOf(traceId)))
+        assertThat(result.facts, hasElement(Fact(key = "traceIds", value = traceId)))
     }
 
     @Test
     fun `generate scenario with dataHolders only`() {
-        val request = MessageBuilder.messageBuilder()
+        val message = MessageBuilder.messageBuilder()
             .id("generatedId")
             .from("Participant1")
             .to("Participant2")
             .label("Message")
             .build()
 
-        val markup = NoteRight("markup")
+        val noteRight = NoteRight("markup")
         val noteLeft = NoteLeft("noteLeft")
 
-        val result = underTest.build(title, mutableListOf(markup, request, noteLeft), listOf(), listOf())
+        val result = underTest.build(
+            title = title,
+            events = mutableListOf(noteRight, message, noteLeft),
+            traceIds = listOf(),
+            participants = listOf()
+        )
 
         assertThat(result.dataHolders, hasSize(equalTo(1)))
-        assertThat(result.dataHolders, hasElement(request))
+        assertThat(result.dataHolders, hasElement(DataHolder(message.id, message.label.abbreviate(), message.data)))
     }
 
     @Test

@@ -10,7 +10,7 @@
     <h1>{{ scenario.title }}</h1>
     <p>Timeframe: {# @pebvariable name="startTime" type="java.time.ZonedDateTime" #}{{ startTime }} - {# @pebvariable name="finishTime" type="java.time.ZonedDateTime" #}{{ finishTime }}</p>
     <article id="{{ scenario.id }}">
-        {% if scenario.facts.entries is not empty %}
+        {% if scenario.facts is not empty %}
         <aside class="facts">
             <div class="factTable">
                 <h3>Key Facts</h3>
@@ -18,7 +18,7 @@
                     <div class="factRowHead">Description</div>
                     <div class="factRowHead">Value</div>
                 </div>
-                {% for fact in scenario.facts.entries %}
+                {% for fact in scenario.facts %}
                 <div class="factRow">
                     <div class="factCell">{{fact.key}}</div>
                     <div class="factCell">{{fact.value}}</div>
@@ -95,8 +95,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
     <script type = "text/javascript">
         highlightKeywords();
-            {%- if scenario.facts.entries is not empty %}
-                {% for fact in scenario.facts.entries %}
+            {%- if scenario.facts is not empty %}
+                {% for fact in scenario.facts %}
         highlightFact("{{scenario.id}}", "{{fact.value}}");
                 {% endfor %}
             {%- endif %}
