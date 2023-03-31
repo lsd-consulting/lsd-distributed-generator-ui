@@ -1,12 +1,12 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.report.model.Scenario
-import com.mitchellbosecke.pebble.PebbleEngine
-import com.mitchellbosecke.pebble.error.PebbleException
-import com.mitchellbosecke.pebble.extension.AbstractExtension
-import com.mitchellbosecke.pebble.extension.Filter
-import com.mitchellbosecke.pebble.template.EvaluationContext
-import com.mitchellbosecke.pebble.template.PebbleTemplate
+import com.lsd.core.report.model.ScenarioModel
+import io.pebbletemplates.pebble.PebbleEngine
+import io.pebbletemplates.pebble.error.PebbleException
+import io.pebbletemplates.pebble.extension.AbstractExtension
+import io.pebbletemplates.pebble.extension.Filter
+import io.pebbletemplates.pebble.template.EvaluationContext
+import io.pebbletemplates.pebble.template.PebbleTemplate
 import org.springframework.stereotype.Component
 import java.io.StringWriter
 import java.io.Writer
@@ -19,7 +19,7 @@ class HtmlReportRenderer {
         .build()
     private val compiledTemplate: PebbleTemplate = engine.getTemplate("templates/custom-html-report.peb")
 
-    fun render(scenario: Scenario, startTime: ZonedDateTime?, finishTime: ZonedDateTime?): String {
+    fun render(scenario: ScenarioModel, startTime: ZonedDateTime?, finishTime: ZonedDateTime?): String {
         val writer: Writer = StringWriter()
         compiledTemplate.evaluate(writer, mapOf("scenario" to scenario, "startTime" to startTime, "finishTime" to finishTime))
         return writer.toString()

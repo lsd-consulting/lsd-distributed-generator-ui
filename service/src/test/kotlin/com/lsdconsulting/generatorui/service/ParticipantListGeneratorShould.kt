@@ -1,7 +1,9 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.events.*
-import com.lsd.report.model.Participant
+import com.lsd.core.builders.MessageBuilder
+import com.lsd.core.domain.*
+import com.lsd.core.domain.MessageType.SYNCHRONOUS_RESPONSE
+import com.lsd.core.domain.ParticipantType.*
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import com.natpryce.hamkrest.hasElement
@@ -15,12 +17,12 @@ internal class ParticipantListGeneratorShould {
 
     @Test
     fun `generate participants from async messages`() {
-        val publishMessage = Message.builder()
+        val publishMessage = MessageBuilder.messageBuilder()
             .from("Participant1")
             .to("Participant2")
             .label("Publish Event")
             .build()
-        val consumeMessage = Message.builder()
+        val consumeMessage = MessageBuilder.messageBuilder()
             .from("Participant2")
             .to("Participant3")
             .label("Consume Message")
@@ -30,127 +32,124 @@ internal class ParticipantListGeneratorShould {
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(Participant("participant Participant1")))
-        assertThat(result, hasElement(Participant("entity Participant2")))
-        assertThat(result, hasElement(Participant("participant Participant3")))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant1"), null)))
+        assertThat(result, hasElement(Participant(type = ENTITY, ComponentName("Participant2"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant3"), null)))
     }
 
     @Test
     fun `generate an actor as first requester`() {
-        val request = Message.builder()
+        val request = MessageBuilder.messageBuilder()
             .from("Participant1")
             .to("Participant2")
             .label("Message")
             .build()
-        val response = SynchronousResponse.builder()
+        val response = MessageBuilder.messageBuilder()
             .from("Participant2")
             .to("Participant1")
             .label("Message")
+            .type(SYNCHRONOUS_RESPONSE)
             .build()
         val events = mutableListOf<SequenceEvent>(request, response)
 
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(2)))
-        assertThat(result, hasElement(Participant("actor Participant1")))
-        assertThat(result, hasElement(Participant("participant Participant2")))
+        assertThat(result, hasElement(Participant(type = ACTOR, ComponentName("Participant1"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant2"), null)))
     }
 
     @Test
     fun `generate participants from sync messages`() {
-        val request1 = Message.builder()
+        val request1 = MessageBuilder.messageBuilder()
             .from("Participant1")
             .to("Participant2")
             .label(randomAlphanumeric(30))
             .build()
-        val request2 = Message.builder()
+        val request2 = MessageBuilder.messageBuilder()
             .from("Participant2")
             .to("Participant3")
             .label(randomAlphanumeric(30))
             .build()
-        val response1 = SynchronousResponse.builder()
+        val response1 = MessageBuilder.messageBuilder()
             .from("Participant3")
             .to("Participant2")
             .label(randomAlphanumeric(30))
+            .type(SYNCHRONOUS_RESPONSE)
             .build()
-        val response2 = SynchronousResponse.builder()
+        val response2 = MessageBuilder.messageBuilder()
             .from("Participant3")
             .to("Participant2")
             .label(randomAlphanumeric(30))
+            .type(SYNCHRONOUS_RESPONSE)
             .build()
         val events = mutableListOf<SequenceEvent>(request1, request2, response1, response2)
 
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(Participant("actor Participant1")))
-        assertThat(result, hasElement(Participant("participant Participant2")))
-        assertThat(result, hasElement(Participant("participant Participant3")))
+        assertThat(result, hasElement(Participant(type = ACTOR, ComponentName("Participant1"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant2"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant3"), null)))
     }
 
     @Test
     fun `ignore synchronous response messages`() {
-        val request1 = Message.builder()
+        val request1 = MessageBuilder.messageBuilder()
             .from("Participant1")
             .to("Participant2")
             .label(randomAlphanumeric(30))
             .build()
-        val request2 = Message.builder()
+        val request2 = MessageBuilder.messageBuilder()
             .from("Participant2")
             .to("Participant3")
             .label(randomAlphanumeric(30))
             .build()
-        val response1 = SynchronousResponse.builder()
+        val response1 = MessageBuilder.messageBuilder()
             .from(randomAlphanumeric(10))
             .to(randomAlphanumeric(10))
             .label(randomAlphanumeric(30))
+            .type(SYNCHRONOUS_RESPONSE)
             .build()
-        val response2 = SynchronousResponse.builder()
+        val response2 = MessageBuilder.messageBuilder()
             .from(randomAlphanumeric(10))
             .to(randomAlphanumeric(10))
             .label(randomAlphanumeric(30))
+            .type(SYNCHRONOUS_RESPONSE)
             .build()
         val events = mutableListOf<SequenceEvent>(request1, request2, response1, response2)
 
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(Participant("actor Participant1")))
-        assertThat(result, hasElement(Participant("participant Participant2")))
-        assertThat(result, hasElement(Participant("participant Participant3")))
+        assertThat(result, hasElement(Participant(type = ACTOR, ComponentName("Participant1"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant2"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant3"), null)))
     }
 
     @Test
     fun `ignore non-message events`() {
-        val request1 = Message.builder()
-            .from("Participant1")
-            .to("Participant2")
+        val request1 = MessageBuilder.messageBuilder()
+            .from(ComponentName("Participant1"))
+            .to(ComponentName("Participant2"))
             .label(randomAlphanumeric(30))
             .build()
-        val request2 = Message.builder()
+        val request2 = MessageBuilder.messageBuilder()
             .from("Participant2")
             .to("Participant3")
             .label(randomAlphanumeric(30))
             .build()
-        val markup = Markup(randomAlphanumeric(10))
+        val noteRight = NoteRight(randomAlphanumeric(10))
         val noteLeft = NoteLeft(randomAlphanumeric(10))
-        val shortMessageInbound = ShortMessageInbound.builder()
-            .id(randomAlphanumeric(10))
-            .to(randomAlphanumeric(10))
-            .label(randomAlphanumeric(30))
-            .build()
-        val shortMessageOutbound = ShortMessageOutbound.builder()
-            .id(randomAlphanumeric(10))
-            .from(randomAlphanumeric(10))
-            .label(randomAlphanumeric(30))
-            .build()
-        val events = mutableListOf<SequenceEvent>(request1, request2, markup, noteLeft, shortMessageInbound, shortMessageOutbound)
+        val pageTitle = PageTitle(randomAlphanumeric(10))
+        val newpage = Newpage(PageTitle(randomAlphanumeric(10)))
+        val events = mutableListOf(request1, request2, noteRight, noteLeft, pageTitle, newpage)
 
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(Participant("actor Participant1")))
-        assertThat(result, hasElement(Participant("participant Participant2")))
-        assertThat(result, hasElement(Participant("participant Participant3")))
+        assertThat(result, hasElement(Participant(type = ACTOR, ComponentName("Participant1"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant2"), null)))
+        assertThat(result, hasElement(Participant(type = PARTICIPANT, ComponentName("Participant3"), null)))
     }
 }

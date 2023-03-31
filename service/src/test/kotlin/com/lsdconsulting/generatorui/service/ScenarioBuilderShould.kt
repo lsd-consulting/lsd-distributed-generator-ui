@@ -1,9 +1,9 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.IdGenerator
-import com.lsd.events.Markup
-import com.lsd.events.Message
-import com.lsd.events.NoteLeft
+import com.lsd.core.IdGenerator
+import com.lsd.core.builders.MessageBuilder
+import com.lsd.core.domain.NoteLeft
+import com.lsd.core.domain.NoteRight
 import com.natpryce.hamkrest.*
 import com.natpryce.hamkrest.assertion.assertThat
 import io.mockk.every
@@ -45,20 +45,20 @@ internal class ScenarioBuilderShould {
     fun `generate scenario with traceIds as facts`() {
         val result = underTest.build(title, mutableListOf(), listOf(traceId), listOf())
 
-        assertThat(result.facts.keySet(), hasSize(equalTo(1)))
-        assertThat(result.facts.get("traceIds"), equalTo(listOf(traceId)))
+        assertThat(result.facts, hasSize(equalTo(1)))
+        assertThat(result.facts.first { it.equals("traceIds") }, equalTo(listOf(traceId)))
     }
 
     @Test
     fun `generate scenario with dataHolders only`() {
-        val request = Message.builder()
+        val request = MessageBuilder.messageBuilder()
             .id("generatedId")
             .from("Participant1")
             .to("Participant2")
             .label("Message")
             .build()
 
-        val markup = Markup("markup")
+        val markup = NoteRight("markup")
         val noteLeft = NoteLeft("noteLeft")
 
         val result = underTest.build(title, mutableListOf(markup, request, noteLeft), listOf(), listOf())
@@ -69,21 +69,21 @@ internal class ScenarioBuilderShould {
 
     @Test
     fun `generate scenario with a sequence diagram with the given events`() {
-        val request = Message.builder()
+        val request = MessageBuilder.messageBuilder()
             .id(id)
             .from("Participant1")
             .to("Participant2")
             .label("Message")
             .build()
 
-        val markup = Markup("markup")
+        val markup = NoteRight("markup")
         val noteLeft = NoteLeft("noteLeft")
 
         val result = underTest.build(title, mutableListOf(markup, request, noteLeft), listOf(), listOf())
 
-        assertThat(result.sequenceDiagram.id, equalTo("generatedId"))
+        assertThat(result.sequenceDiagram!!.id, equalTo("generatedId"))
         assertThat(
-            result.sequenceDiagram.uml, allOf(
+            result.sequenceDiagram!!.uml, allOf(
                 containsSubstring("@startuml"),
                 containsSubstring(id),
                 containsSubstring("Participant1"),
@@ -95,7 +95,7 @@ internal class ScenarioBuilderShould {
             )
         )
         assertThat(
-            result.sequenceDiagram.svg, allOf(
+            result.sequenceDiagram!!.svg, allOf(
                 containsSubstring("<svg"),
                 containsSubstring("</svg>")
             )
@@ -104,21 +104,21 @@ internal class ScenarioBuilderShould {
 
     @Test
     fun `generate scenario with a component diagram with the given events but no ma`() {
-        val request = Message.builder()
+        val request = MessageBuilder.messageBuilder()
             .id(id)
             .from("Participant1")
             .to("Participant2")
             .label("Message")
             .build()
 
-        val markup = Markup("markup")
+        val markup = NoteRight("markup")
         val noteLeft = NoteLeft("noteLeft")
 
         val result = underTest.build(title, mutableListOf(markup, request, noteLeft), listOf(), listOf())
 
-        assertThat(result.componentDiagram.id, equalTo("generatedId"))
+        assertThat(result.componentDiagram!!.id, equalTo("generatedId"))
         assertThat(
-            result.componentDiagram.uml, allOf(
+            result.componentDiagram!!.uml, allOf(
                 containsSubstring("@startuml"),
                 containsSubstring("Participant1"),
                 containsSubstring("Participant2"),
@@ -126,7 +126,7 @@ internal class ScenarioBuilderShould {
             )
         )
         assertThat(
-            result.componentDiagram.svg, allOf(
+            result.componentDiagram!!.svg, allOf(
                 containsSubstring("<svg"),
                 containsSubstring("</svg>")
             )

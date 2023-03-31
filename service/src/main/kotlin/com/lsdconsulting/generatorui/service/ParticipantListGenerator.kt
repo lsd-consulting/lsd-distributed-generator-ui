@@ -1,32 +1,29 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.ParticipantType
-import com.lsd.events.Message
-import com.lsd.events.SequenceEvent
-import com.lsd.events.SynchronousResponse
-import com.lsd.report.model.Participant
+import com.lsd.core.domain.*
+import com.lsd.core.domain.ParticipantType.*
 import org.springframework.stereotype.Component
 
 @Component
 class ParticipantListGenerator {
 
-    fun generateParticipants(events: MutableList<SequenceEvent>): LinkedHashSet<Participant> {
+    fun generateParticipants(events: MutableList<SequenceEvent>): Set<Participant> {
         val participantNames = mutableSetOf<String>()
         val participants = linkedSetOf<Participant>()
         events.forEach {
-            if (it is Message && it !is SynchronousResponse) {
+            if (it is Message && it.type != MessageType.SYNCHRONOUS_RESPONSE) {
                 when (it.label.lowercase()) {
                     "publish event" -> {
-                        addToParticipants(participantNames, it.from, participants, ParticipantType.PARTICIPANT.called(it.from))
-                        addToParticipants(participantNames, it.to, participants, ParticipantType.ENTITY.called(it.to))
+                        addToParticipants(participantNames, it.from, participants, PARTICIPANT.called(it.from.name))
+                        addToParticipants(participantNames, it.to, participants, ENTITY.called(it.to.name))
                     }
                     "consume message" -> {
-                        addToParticipants(participantNames, it.to, participants, ParticipantType.PARTICIPANT.called(it.to))
-                        addToParticipants(participantNames, it.from, participants, ParticipantType.ENTITY.called(it.from))
+                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to.name))
+                        addToParticipants(participantNames, it.from, participants, ENTITY.called(it.from.name))
                     }
                     else -> {
-                        addToParticipants(participantNames, it.from, participants, if (participants.isEmpty()) ParticipantType.ACTOR.called(it.from) else ParticipantType.PARTICIPANT.called(it.from))
-                        addToParticipants(participantNames, it.to, participants, ParticipantType.PARTICIPANT.called(it.to))
+                        addToParticipants(participantNames, it.from, participants, if (participants.isEmpty()) ACTOR.called(it.from.name) else PARTICIPANT.called(it.from.name))
+                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to.name))
                     }
                 }
             }
@@ -36,14 +33,13 @@ class ParticipantListGenerator {
 
     private fun addToParticipants(
         participantNames: MutableSet<String>,
-        participantName: String,
+        participantName: ComponentName,
         participants: LinkedHashSet<Participant>,
         participant: Participant
     ) {
-        if (!participantNames.contains(participantName)) {
+        if (!participantNames.contains(participantName.name)) {
             participants.add(participant)
-            participantNames.add(participantName)
+            participantNames.add(participantName.name)
         }
     }
-
 }
