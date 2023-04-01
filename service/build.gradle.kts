@@ -9,7 +9,9 @@ plugins {
     id("signing")
     id("jacoco")
     id("com.palantir.git-version")
+    id("kotlin-kapt")
 }
+
 
 //////////////////////////
 // componentTest settings
@@ -72,6 +74,11 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+    // WireMockStubGenerator
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.0.3")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.0.3")
+    compileOnly("com.github.tomakehurst:wiremock:2.27.2")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("io.pebbletemplates:pebble:3.2.0")
@@ -111,6 +118,33 @@ dependencies {
     }
     componentTestImplementation("com.approvaltests:approvaltests:12.4.1")
 }
+
+//////////////////////////
+// WireMockStubGenerator
+//////////////////////////
+
+val compileJava = project.tasks.named("compileJava").get() as JavaCompile
+tasks.register<JavaCompile>("compileStubs") {
+    classpath = compileJava.classpath
+    source = project.layout.buildDirectory.dir("generated-stub-sources").get().asFileTree
+    val stubsClassesDir = project.buildDir.resolve("generated-stub-classes")
+    destinationDirectory.set(stubsClassesDir)
+}
+compileJava.finalizedBy(tasks.getByName("compileStubs"))
+
+val compileJavaStubs = project.tasks.named("compileStubs").get() as JavaCompile
+tasks.register<Jar>("stubsJar") {
+    description = "Java Wiremock stubs JAR"
+    group = "Verification"
+    archiveBaseName.set(project.provider { project.name })
+    archiveClassifier.set("wiremock-stubs")
+    from(compileJavaStubs.destinationDirectory)
+    dependsOn(compileJavaStubs)
+    project.artifacts {
+        add("archives", tasks.getByName("stubsJar"))
+    }
+}
+compileJavaStubs.finalizedBy(tasks.getByName("stubsJar"))
 
 //////////////////////////
 // Jacoco
@@ -196,7 +230,6 @@ publishing {
                     credentials(PasswordCredentials::class)
                 }
             }
-
         }
     }
 }

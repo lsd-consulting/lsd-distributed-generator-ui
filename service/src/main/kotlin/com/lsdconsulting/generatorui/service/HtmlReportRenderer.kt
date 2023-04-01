@@ -50,7 +50,7 @@ class SanitiserFilter : Filter {
     override fun getArgumentNames(): List<String>? = null
 
     private fun sanitise(input: String?): String =
-        input?.strip()
+        input?.trim()
             ?.replace("<\\$.*?>".toRegex(), "")
             ?: ""
 }
