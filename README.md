@@ -12,3 +12,4 @@
 
 This is the graphical interface providing the LSD generation functionality.
 
+This service provides WireMock stubs for testing purposes. 
