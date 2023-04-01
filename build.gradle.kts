@@ -29,6 +29,8 @@ val gitVersion: groovy.lang.Closure<String> by extra
 version = gitVersion().replace(Regex("^v"), "")
 group = "io.github.lsd-consulting"
 
+println("Version: $version")
+
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())

@@ -140,10 +140,8 @@ tasks.register<Jar>("stubsJar") {
     archiveClassifier.set("wiremock-stubs")
     from(compileJavaStubs.destinationDirectory)
     dependsOn(compileJavaStubs)
-    project.artifacts {
-        add("archives", tasks.getByName("stubsJar"))
-    }
 }
+val stubsJar = artifacts.add("archives", tasks.getByName("stubsJar"))
 compileJavaStubs.finalizedBy(tasks.getByName("stubsJar"))
 
 //////////////////////////
@@ -190,8 +188,8 @@ publishing {
             artifactId = rootProject.name
             version = rootProject.version.toString()
 
-
             artifact(project.tasks.bootJar)
+            artifact(stubsJar)
 
             from(components["java"])
             pom {
