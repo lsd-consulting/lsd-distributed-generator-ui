@@ -38,10 +38,10 @@ val componentTest = task<Test>("componentTest") {
 }
 
 val componentTestImplementation: Configuration by configurations.getting {
-    extendsFrom(configurations.testImplementation.get())
+    extendsFrom(configurations.implementation.get())
 }
 val componentTestRuntimeOnly: Configuration by configurations.getting {
-    extendsFrom(configurations.testRuntimeOnly.get())
+    extendsFrom(configurations.runtimeOnly.get())
 }
 
 configurations["componentTestImplementation"].extendsFrom(configurations.runtimeOnly.get())
@@ -75,7 +75,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.0.3")
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.0.3") {
+        because("we want to generate WireMock stubs for client")
+    }
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.0.3")
     compileOnly("com.github.tomakehurst:wiremock:2.27.2")
 
@@ -118,7 +120,7 @@ dependencies {
     componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.2.4") {
         because("we want to run tests against a database")
     }
-    componentTestImplementation("com.approvaltests:approvaltests:12.4.1")
+    componentTestImplementation("com.approvaltests:approvaltests:18.5.0")
 }
 
 //////////////////////////
@@ -159,8 +161,8 @@ tasks.jacocoTestReport {
         file("${project.buildDir}/jacoco/componentTest.exec")
     )
     reports {
-        xml.isEnabled = true
-        html.isEnabled = true
+        xml.required.set(true)
+        html.required.set(true)
         html.setDestination(project.provider { File("${project.buildDir}/reports/coverage") })
     }
 }
@@ -171,12 +173,12 @@ tasks.jacocoTestReport {
 
 tasks.getByName<BootJar>("bootJar") {
     enabled = true
-    classifier = "boot"
+    archiveClassifier.set("boot")
 }
 
 tasks.getByName<Jar>("jar") {
     enabled = true
-    classifier = ""
+    archiveClassifier.set("")
 }
 
 project.tasks.publish {
