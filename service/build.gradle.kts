@@ -88,6 +88,7 @@ dependencies {
 
     // LSD
     implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.6")
+    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:2.0.3")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -105,6 +106,7 @@ dependencies {
         because("we want to assert nicely")
     }
     testImplementation("org.apache.commons:commons-lang3:3.12.0")
+    testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
     // Component test dependencies
