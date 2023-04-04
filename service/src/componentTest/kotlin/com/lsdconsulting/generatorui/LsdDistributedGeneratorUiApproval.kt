@@ -1,12 +1,13 @@
 package com.lsdconsulting.generatorui
 
+import com.lsd.core.IdGenerator
 import io.lsdconsulting.lsd.distributed.access.model.InteractionType
 import io.lsdconsulting.lsd.distributed.access.model.InteractionType.REQUEST
 import io.lsdconsulting.lsd.distributed.access.model.InteractionType.RESPONSE
 import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
 import org.approvaltests.Approvals
-import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -16,10 +17,10 @@ import java.time.Instant.EPOCH
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-@Order(1)
 class LsdGeneratorUiApproval(
     @Autowired private val interceptedDocumentRepository: InterceptedDocumentRepository,
-    @Autowired private val testRestTemplate: TestRestTemplate
+    @Autowired private val testRestTemplate: TestRestTemplate,
+    @Autowired private val idGenerator: IdGenerator
 ): ComponentTestBase() {
 
     val traceId = "someTraceId"
@@ -30,6 +31,11 @@ class LsdGeneratorUiApproval(
     val profile = "TEST"
     val elapsedTime = 25L
     val createdAt: ZonedDateTime = ZonedDateTime.ofInstant(EPOCH, ZoneId.of("UTC"))
+
+    @BeforeEach
+    fun resetIdGenerator() {
+        idGenerator.reset()
+    }
 
     @Test
     fun shouldReturnApprovedResponse() {
