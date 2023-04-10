@@ -1,7 +1,7 @@
 package com.lsdconsulting.generatorui.controller
 
 import com.lsdconsulting.generatorui.service.LsdGenerator
-import com.lsdconsulting.generatorui.service.LsdSaver
+import com.lsdconsulting.generatorui.service.LsdSarvice
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
@@ -17,8 +17,8 @@ import org.springframework.http.ResponseEntity
 internal class LsdControllerShould {
 
     private val lsdGenerator = mockk<LsdGenerator>()
-    private val lsdSaver = mockk<LsdSaver>(relaxed = true)
-    private val underTest = LsdController(lsdGenerator = lsdGenerator, lsdSaver = lsdSaver)
+    private val lsdSarvice = mockk<LsdSarvice>(relaxed = true)
+    private val underTest = LsdController(lsdGenerator = lsdGenerator, lsdSarvice = lsdSarvice)
     private val traceId = randomAlphanumeric(6)
     private val expectedResult = randomAlphanumeric(30)
     private var easyRandom = EasyRandom(EasyRandomParameters().seed(System.currentTimeMillis()))
@@ -27,7 +27,7 @@ internal class LsdControllerShould {
     fun passTraceIdToGenerator() {
         every { lsdGenerator.captureInteractionsFromDatabase(traceId) } returns expectedResult
 
-        val result = underTest.find(traceId)
+        val result = underTest.findByTraceId(traceId)
 
         assertThat(result, equalTo(expectedResult))
         verify { lsdGenerator.captureInteractionsFromDatabase(traceId) }
@@ -41,6 +41,6 @@ internal class LsdControllerShould {
         val result = underTest.store(interceptedInteraction)
 
         assertThat(result, equalTo(ResponseEntity.ok(interceptedInteraction)))
-        verify { lsdSaver.storeInteractionsInDatabase(interceptedInteraction) }
+        verify { lsdSarvice.storeInteractionsInDatabase(interceptedInteraction) }
     }
 }

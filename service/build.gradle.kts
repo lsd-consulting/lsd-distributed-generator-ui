@@ -90,7 +90,7 @@ dependencies {
 
     // LSD
     implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.7")
-    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:2.0.3")
+    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:2.0.4")
 
     //////////////////////////////////
     // Unit test dependencies

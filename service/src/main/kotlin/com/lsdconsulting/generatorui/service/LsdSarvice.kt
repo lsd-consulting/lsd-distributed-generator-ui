@@ -5,10 +5,13 @@ import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRep
 import org.springframework.stereotype.Service
 
 @Service
-class LsdSaver(
+class LsdSarvice(
     private val interceptedDocumentRepository: InterceptedDocumentRepository
 ) {
     fun storeInteractionsInDatabase(interceptedInteraction: InterceptedInteraction) {
         interceptedDocumentRepository.save(interceptedInteraction)
     }
+
+    fun findInteractionsByTraceIds(vararg traceIds: String): List<InterceptedInteraction> =
+        interceptedDocumentRepository.findByTraceIds(*traceIds)
 }

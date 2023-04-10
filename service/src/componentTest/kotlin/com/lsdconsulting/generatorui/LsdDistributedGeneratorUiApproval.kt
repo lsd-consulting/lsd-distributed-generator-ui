@@ -11,8 +11,10 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.boot.test.web.client.getForEntity
-import org.springframework.http.ResponseEntity
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpMethod
+import org.springframework.http.MediaType.TEXT_HTML
 import java.time.Instant.EPOCH
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -45,7 +47,10 @@ class LsdGeneratorUiApproval(
         interceptedDocumentRepository.save(buildInterceptedInteraction(null, REQUEST))
         interceptedDocumentRepository.save(buildInterceptedInteraction("200", RESPONSE))
 
-        val result: ResponseEntity<String> = testRestTemplate.getForEntity("/lsd/$traceId")
+        val headers = HttpHeaders()
+        headers.accept = listOf(TEXT_HTML)
+
+        val result = testRestTemplate.exchange("/lsd/$traceId", HttpMethod.GET, HttpEntity<Nothing>(headers), String::class.java)
 
         Approvals.verifyHtml(result.body)
     }
