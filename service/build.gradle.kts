@@ -83,13 +83,12 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
     implementation("org.apache.commons:commons-collections4:4.4")
-    implementation("io.pebbletemplates:pebble:3.2.0")
     implementation("org.apache.httpcomponents:httpcore:4.4.15") {
         because("it's needed for DB connection security")
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.7")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.9")
     implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:2.0.4")
 
     //////////////////////////////////

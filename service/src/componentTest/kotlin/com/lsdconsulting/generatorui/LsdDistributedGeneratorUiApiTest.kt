@@ -45,7 +45,7 @@ class LsdDistributedGeneratorUiApiTest(
         val url = "/lsd/${interceptedInteraction.traceId}"
         val result = testRestTemplate.exchange(url, GET, HttpEntity<Nothing>(headers), String::class.java)
 
-        assertThat(result.body!!, containsSubstring("Diagram for traceIds: ${interceptedInteraction.traceId}"))
+        assertThat(result.body!!, containsSubstring("Diagram for traceIds"))
     }
 
     @Test
