@@ -21,7 +21,7 @@ import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit.MILLIS
 
 
-class LsdGeneratorUiApiTest(
+class LsdDistributedGeneratorUiApiTest(
     @Autowired private val testRestTemplate: TestRestTemplate
 ) : ComponentTestBase() {
 

@@ -19,7 +19,7 @@ import java.time.Instant.EPOCH
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class LsdGeneratorUiApproval(
+class LsdDistributedGeneratorUiApproval(
     @Autowired private val interceptedDocumentRepository: InterceptedDocumentRepository,
     @Autowired private val testRestTemplate: TestRestTemplate,
     @Autowired private val idGenerator: IdGenerator

@@ -32,9 +32,9 @@ internal class ParticipantListGeneratorShould {
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant1")))
-        assertThat(result, hasElement(ENTITY.called("Participant2")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant3")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant1", "", "powderblue")))
+        assertThat(result, hasElement(ENTITY.called("Participant2", "", "green")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant3", "", "powderblue")))
     }
 
     @Test
@@ -55,8 +55,8 @@ internal class ParticipantListGeneratorShould {
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(2)))
-        assertThat(result, hasElement(ACTOR.called("Participant1")))
-        assertThat(result, hasElement(PARTICIPANT.called(("Participant2"))))
+        assertThat(result, hasElement(ACTOR.called("Participant1", "", "orange")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant2", "", "powderblue")))
     }
 
     @Test
@@ -88,9 +88,9 @@ internal class ParticipantListGeneratorShould {
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(ACTOR.called("Participant1")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant2")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant3")))
+        assertThat(result, hasElement(ACTOR.called("Participant1", "", "orange")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant2", "", "powderblue")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant3", "", "powderblue")))
     }
 
     @Test
@@ -122,9 +122,9 @@ internal class ParticipantListGeneratorShould {
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(ACTOR.called("Participant1")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant2")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant3")))
+        assertThat(result, hasElement(ACTOR.called("Participant1", "", "orange")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant2", "", "powderblue")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant3", "", "powderblue")))
     }
 
     @Test
@@ -148,8 +148,8 @@ internal class ParticipantListGeneratorShould {
         val result = underTest.generateParticipants(events)
 
         assertThat(result, hasSize(equalTo(3)))
-        assertThat(result, hasElement(ACTOR.called("Participant1")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant2")))
-        assertThat(result, hasElement(PARTICIPANT.called("Participant3")))
+        assertThat(result, hasElement(ACTOR.called("Participant1", "", "orange")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant2", "", "powderblue")))
+        assertThat(result, hasElement(PARTICIPANT.called("Participant3", "", "powderblue")))
     }
 }
