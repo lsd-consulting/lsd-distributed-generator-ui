@@ -32,7 +32,6 @@ class LsdGenerator(
         return htmlReportRenderer.render(
             Report(
                 title = "Event Report",
-                status = "success",
                 showContentsMenu = false,
                 useLocalStaticFiles = false,
                 scenarios = listOf(scenarioModelBuilder()
