@@ -43,9 +43,10 @@ class LsdDistributedGeneratorUiApiTest(
         headers.accept = listOf(TEXT_HTML)
 
         val url = "/lsd/${interceptedInteraction.traceId}"
-        val result = testRestTemplate.exchange(url, GET, HttpEntity<Nothing>(headers), String::class.java)
+        val resultBody = testRestTemplate.exchange(url, GET, HttpEntity<Nothing>(headers), String::class.java).body!!
 
-        assertThat(result.body!!, containsSubstring("Diagram for traceIds"))
+        assertThat(resultBody, containsSubstring("Diagram for traceIds"))
+        assertThat(resultBody, containsSubstring(interceptedInteraction.traceId))
     }
 
     @Test
