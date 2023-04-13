@@ -14,16 +14,16 @@ class ParticipantListGenerator {
             if (it is Message && it.type != MessageType.SYNCHRONOUS_RESPONSE) {
                 when (it.label.lowercase()) {
                     "publish event" -> {
-                        addToParticipants(participantNames, it.from, participants, PARTICIPANT.called(it.from.name))
-                        addToParticipants(participantNames, it.to, participants, ENTITY.called(it.to.name))
+                        addToParticipants(participantNames, it.from, participants, PARTICIPANT.called(it.from.name, "", "powderblue"))
+                        addToParticipants(participantNames, it.to, participants, ENTITY.called(it.to.name, "", "green"))
                     }
                     "consume message" -> {
-                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to.name))
-                        addToParticipants(participantNames, it.from, participants, ENTITY.called(it.from.name))
+                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to.name, "", "powderblue"))
+                        addToParticipants(participantNames, it.from, participants, ENTITY.called(it.from.name, "", "green"))
                     }
                     else -> {
-                        addToParticipants(participantNames, it.from, participants, if (participants.isEmpty()) ACTOR.called(it.from.name) else PARTICIPANT.called(it.from.name))
-                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to.name))
+                        addToParticipants(participantNames, it.from, participants, if (participants.isEmpty()) ACTOR.called(it.from.name, "", "orange") else PARTICIPANT.called(it.from.name, "", "powderblue"))
+                        addToParticipants(participantNames, it.to, participants, PARTICIPANT.called(it.to.name, "", "powderblue"))
                     }
                 }
             }
