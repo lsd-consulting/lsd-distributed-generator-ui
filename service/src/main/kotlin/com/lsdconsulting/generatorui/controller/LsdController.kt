@@ -2,7 +2,7 @@ package com.lsdconsulting.generatorui.controller
 
 import com.lsdconsulting.generatorui.config.logger.log
 import com.lsdconsulting.generatorui.service.LsdGenerator
-import com.lsdconsulting.generatorui.service.LsdSarvice
+import com.lsdconsulting.generatorui.service.LsdService
 import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
 import io.lsdconsulting.stub.annotation.GenerateWireMockStub
 import org.springframework.http.MediaType.*
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class LsdController(
     private val lsdGenerator: LsdGenerator,
-    private val lsdSarvice: LsdSarvice
+    private val lsdService: LsdService
 ) {
 
     @GetMapping(value  = ["/lsd/{traceId}", "/lsds/{traceId}"], produces = [TEXT_HTML_VALUE])
@@ -25,13 +25,13 @@ class LsdController(
     @GetMapping(value  = ["/lsds"], produces = [APPLICATION_JSON_VALUE])
     fun findByTraceIds(@RequestParam vararg traceIds:String): ResponseEntity<List<InterceptedInteraction>> {
         log().info("Received lsd request for traceIds={}", traceIds)
-        return ResponseEntity.ok(lsdSarvice.findInteractionsByTraceIds(*traceIds))
+        return ResponseEntity.ok(lsdService.findInteractionsByTraceIds(*traceIds))
     }
 
     @PostMapping("/lsds")
     fun store(@RequestBody interceptedInteraction: InterceptedInteraction): ResponseEntity<InterceptedInteraction> {
         log().info("Received interceptedInteraction={}", interceptedInteraction)
-        lsdSarvice.storeInteractionsInDatabase(interceptedInteraction)
+        lsdService.storeInteractionsInDatabase(interceptedInteraction)
         return ResponseEntity.ok(interceptedInteraction)
     }
 }

@@ -5,7 +5,7 @@ import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRep
 import org.springframework.stereotype.Service
 
 @Service
-class LsdSarvice(
+class LsdService(
     private val interceptedDocumentRepository: InterceptedDocumentRepository
 ) {
     fun storeInteractionsInDatabase(interceptedInteraction: InterceptedInteraction) {
