@@ -11,6 +11,7 @@ import com.lsd.core.report.HtmlReportRenderer
 import com.lsd.core.report.model.DataHolder
 import com.lsd.core.report.model.Report
 import io.lsdconsulting.lsd.distributed.generator.diagram.InteractionGenerator
+import io.lsdconsulting.lsd.distributed.generator.diagram.dto.EventContainer
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -38,13 +39,7 @@ class LsdGenerator(
                     .id(idGenerator.next())
                     .title("Diagram for traceIds")
                     .status("success")
-                    .facts(
-                        listOf(
-                            Fact("traceIds", traceIds.joinToString()),
-                            Fact("startTime", eventContainer.startTime.toString()),
-                            Fact("finishTime", eventContainer.finishTime.toString())
-                        )
-                    )
+                    .facts(compileFacts(traceIds, eventContainer))
                     .dataHolders(
                         eventContainer.events
                             .filterIsInstance<Message>()
@@ -72,5 +67,18 @@ class LsdGenerator(
                         ).diagram()
                     )
                     .build())))
+    }
+
+    private fun compileFacts(traceIds: Array<out String>, eventContainer: EventContainer): MutableList<Fact> {
+        val facts = mutableListOf(
+            Fact("traceIds", traceIds.joinToString()),
+        )
+        eventContainer.startTime?.let {
+            facts.add(Fact("startTime", eventContainer.startTime.toString()))
+        }
+        eventContainer.finishTime?.let {
+            facts.add(Fact("finishTime", eventContainer.finishTime.toString()))
+        }
+        return facts
     }
 }
