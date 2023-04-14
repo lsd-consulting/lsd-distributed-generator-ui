@@ -152,4 +152,13 @@ internal class ParticipantListGeneratorShould {
         assertThat(result, hasElement(PARTICIPANT.called(name = "Participant2", colour = "powderblue")))
         assertThat(result, hasElement(PARTICIPANT.called(name = "Participant3", colour = "powderblue")))
     }
+
+    @Test
+    fun `handle empty events`() {
+        val events = mutableListOf<SequenceEvent>()
+
+        val result = underTest.generateParticipants(events)
+
+        assertThat(result, hasSize(equalTo(0)))
+    }
 }
