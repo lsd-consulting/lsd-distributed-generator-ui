@@ -8,10 +8,10 @@ import org.junit.jupiter.api.BeforeAll
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT
 import org.springframework.context.annotation.Import
-import org.springframework.test.context.TestPropertySource
+import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest(webEnvironment = DEFINED_PORT, classes = [LsdGeneratorUiApplication::class])
-@TestPropertySource("classpath:application-test.properties")
+@ActiveProfiles("test")
 @Import(RepositoryConfig::class, LibraryConfig::class)
 class ComponentTestBase {
     companion object {

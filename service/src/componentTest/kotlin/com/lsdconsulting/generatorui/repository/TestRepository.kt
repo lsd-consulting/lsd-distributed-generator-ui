@@ -9,7 +9,7 @@ import de.flapdoodle.embed.mongo.MongodExecutable
 import de.flapdoodle.embed.mongo.MongodStarter
 import de.flapdoodle.embed.mongo.config.MongodConfig
 import de.flapdoodle.embed.mongo.config.Net
-import de.flapdoodle.embed.mongo.distribution.Version.Main.PRODUCTION
+import de.flapdoodle.embed.mongo.distribution.Version.Main.V5_0
 import de.flapdoodle.embed.process.runtime.Network.localhostIsIPv6
 import java.io.IOException
 
@@ -23,7 +23,7 @@ class TestRepository {
         fun setupDatabase() {
             try {
                 val mongodConfig: MongodConfig = MongodConfig.builder()
-                    .version(PRODUCTION)
+                    .version(V5_0)
                     .net(Net(MONGODB_HOST, MONGODB_PORT, localhostIsIPv6()))
                     .build()
                 mongodExecutable = MongodStarter.getDefaultInstance().prepare(mongodConfig)

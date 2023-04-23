@@ -130,8 +130,8 @@ internal class ParticipantListGeneratorShould {
     @Test
     fun `ignore non-message events`() {
         val request1 = MessageBuilder.messageBuilder()
-            .from(ComponentName("Participant1"))
-            .to(ComponentName("Participant2"))
+            .from(PARTICIPANT.called("Participant1"))
+            .to(PARTICIPANT.called("Participant2"))
             .label(randomAlphanumeric(30))
             .build()
         val request2 = MessageBuilder.messageBuilder()

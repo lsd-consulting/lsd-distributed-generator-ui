@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "2.5.6"
+    id("org.springframework.boot") version "2.7.10"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -21,8 +21,8 @@ sourceSets.create("componentTest") {
     withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
         kotlin.srcDir("src/componentTest/kotlin")
         resources.srcDir("src/componentTest/resources")
-        compileClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
-        runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
+        compileClasspath += sourceSets["main"].output
+        runtimeClasspath += output + compileClasspath
     }
 }
 
@@ -66,7 +66,6 @@ dependencies {
     // Spring
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-data-rest")
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
 
@@ -88,8 +87,8 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:1.1.9")
-    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:2.0.5")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:2.1.0")
+    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:3.0.1")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -116,10 +115,14 @@ dependencies {
     componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
     }
-    componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.2.4") {
+    componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
         because("we want to run tests against a database")
     }
     componentTestImplementation("com.approvaltests:approvaltests:18.5.0")
+    componentTestImplementation("org.jeasy:easy-random-core:5.0.0")
+    componentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
+        because("we want to assert nicely")
+    }
 }
 
 //////////////////////////

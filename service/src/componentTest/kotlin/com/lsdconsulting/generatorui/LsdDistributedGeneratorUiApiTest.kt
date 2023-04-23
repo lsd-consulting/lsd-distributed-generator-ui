@@ -76,8 +76,8 @@ class LsdDistributedGeneratorUiApiTest(
     }
 
     private fun saveInterceptedInteraction(): InterceptedInteraction {
-        val interceptedInteraction = easyRandom.nextObject(InterceptedInteraction::class.java).toBuilder()
-            .createdAt(ZonedDateTime.now(ZoneId.of("UTC")).truncatedTo(MILLIS)).build()
+        val interceptedInteraction = easyRandom.nextObject(InterceptedInteraction::class.java).copy(
+            createdAt = ZonedDateTime.now(ZoneId.of("UTC")).truncatedTo(MILLIS))
         val request = HttpEntity(interceptedInteraction)
         testRestTemplate.postForEntity("/lsds", request, Nothing::class.java)
         return interceptedInteraction

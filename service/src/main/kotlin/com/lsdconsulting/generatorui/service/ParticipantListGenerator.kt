@@ -16,23 +16,23 @@ class ParticipantListGenerator {
                 if (it is Message && it.type != MessageType.SYNCHRONOUS_RESPONSE) {
                     when (it.label.lowercase()) {
                         "publish event" -> {
-                            participants.add(PARTICIPANT.called(it.from.name, colour = "powderblue"))
-                            participants.add(ENTITY.called(it.to.name, colour = "green"))
+                            participants.add(PARTICIPANT.called(it.from.componentName.normalisedName, colour = "powderblue"))
+                            participants.add(ENTITY.called(it.to.componentName.normalisedName, colour = "green"))
                         }
 
                         "consume message" -> {
-                            participants.add(PARTICIPANT.called(it.to.name, colour = "powderblue"))
-                            participants.add(ENTITY.called(it.from.name, colour = "green"))
+                            participants.add(PARTICIPANT.called(it.to.componentName.normalisedName, colour = "powderblue"))
+                            participants.add(ENTITY.called(it.from.componentName.normalisedName, colour = "green"))
                         }
 
                         else -> {
                             participants.add(
                                 if (participants.isEmpty())
-                                    ACTOR.called(it.from.name, colour = "orange")
+                                    ACTOR.called(it.from.componentName.normalisedName, colour = "orange")
                                 else
-                                    PARTICIPANT.called(it.from.name, colour = "powderblue")
+                                    PARTICIPANT.called(it.from.componentName.normalisedName, colour = "powderblue")
                             )
-                            participants.add(PARTICIPANT.called(it.to.name, colour = "powderblue"))
+                            participants.add(PARTICIPANT.called(it.to.componentName.normalisedName, colour = "powderblue"))
                         }
                     }
                 }

@@ -27,7 +27,7 @@ class LsdDistributedGeneratorUiApproval(
 
     val traceId = "someTraceId"
     val body = "someBody"
-    val requestHeaders = mapOf("header" to listOf("value"))
+    val requestHeaders = mutableMapOf("header" to listOf("value") as Collection<String>)
     val responseHeaders = mapOf("header" to listOf("value"))
     val httpMethod = "GET"
     val profile = "TEST"
@@ -58,19 +58,18 @@ class LsdDistributedGeneratorUiApproval(
     private fun buildInterceptedInteraction(
         status: String?,
         type: InteractionType
-    ): InterceptedInteraction? = InterceptedInteraction.builder()
-        .traceId(traceId)
-        .body(body)
-        .requestHeaders(requestHeaders)
-        .responseHeaders(responseHeaders)
-        .serviceName("Source")
-        .target("Target")
-        .path("/path")
-        .httpStatus(status)
-        .httpMethod(httpMethod)
-        .interactionType(type)
-        .profile(profile)
-        .elapsedTime(elapsedTime)
-        .createdAt(createdAt)
-        .build()
+    ) = InterceptedInteraction(
+        traceId = traceId,
+        body = body,
+        requestHeaders = requestHeaders,
+        responseHeaders = responseHeaders,
+        serviceName = "Source",
+        target = "Target",
+        path = "/path",
+        httpStatus = status,
+        httpMethod = httpMethod,
+        interactionType = type,
+        profile = profile,
+        elapsedTime = elapsedTime,
+        createdAt = createdAt)
 }
