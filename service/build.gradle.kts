@@ -63,6 +63,8 @@ tasks {
 //////////////////////////
 
 dependencies {
+    implementation(project(":api"))
+
     // Spring
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
@@ -191,7 +193,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             groupId = "$group"
-            artifactId = rootProject.name
+            artifactId = "${rootProject.name}-${project.name}"
             version = rootProject.version.toString()
 
             artifact(project.tasks.bootJar)

@@ -34,4 +34,10 @@ class LsdController(
         lsdService.storeInteractionsInDatabase(interceptedInteraction)
         return ResponseEntity.ok(interceptedInteraction)
     }
+
+    @GetMapping(value  = ["/lsdFlows"], produces = [APPLICATION_JSON_VALUE])
+    fun findRecentFlows(): ResponseEntity<List<InterceptedFlowResponse>> {
+        log().info("Received lsd request for recent flows")
+        return ResponseEntity.ok(lsdService.findMostRecentFlows())
+    }
 }
