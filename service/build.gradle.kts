@@ -63,7 +63,7 @@ tasks {
 //////////////////////////
 
 dependencies {
-    implementation(project(":api"))
+    api(project(":api"))
 
     // Spring
     implementation("org.springframework.boot:spring-boot-starter-actuator")
