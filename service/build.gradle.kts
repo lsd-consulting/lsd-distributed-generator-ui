@@ -76,7 +76,7 @@ dependencies {
     kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.1.2") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.0.5")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.1.2")
     compileOnly("com.github.tomakehurst:wiremock-jre8:2.35.0")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
