@@ -36,8 +36,8 @@ class LsdController(
     }
 
     @GetMapping(value  = ["/lsdFlows"], produces = [APPLICATION_JSON_VALUE])
-    fun findRecentFlows(): ResponseEntity<List<InterceptedFlowResponse>> {
+    fun findRecentFlows(@RequestParam(required = false) resultSizeLimit: Int?): ResponseEntity<List<InterceptedFlowResponse>> {
         log().info("Received lsd request for recent flows")
-        return ResponseEntity.ok(lsdService.findMostRecentFlows())
+        return ResponseEntity.ok(lsdService.findMostRecentFlows(resultSizeLimit))
     }
 }

@@ -19,8 +19,8 @@ class LsdService(
     fun findInteractionsByTraceIds(vararg traceIds: String): List<InterceptedInteraction> =
         interceptedDocumentRepository.findByTraceIds(*traceIds)
 
-    fun findMostRecentFlows(): List<InterceptedFlowResponse> =
-        interceptedDocumentAdminRepository.findRecentFlows(10)
+    fun findMostRecentFlows(resultSizeLimit: Int?): List<InterceptedFlowResponse> =
+        interceptedDocumentAdminRepository.findRecentFlows(resultSizeLimit?:10)
             .map {
                 InterceptedFlowResponse(
                     traceId = it.initialInteraction.traceId,
