@@ -66,10 +66,7 @@ dependencies {
     api(project(":api"))
 
     // Spring
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("org.springframework.boot:spring-boot-starter-data-rest")
-    implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -89,8 +86,8 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:2.1.0")
-    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:3.0.1")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:2.1.2")
+    implementation("io.github.lsd-consulting:lsd-distributed-mongodb-access:3.0.3")
 
     //////////////////////////////////
     // Unit test dependencies
