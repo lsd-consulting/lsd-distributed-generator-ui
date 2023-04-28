@@ -4,10 +4,9 @@ import com.lsd.core.LsdContext
 import io.lsdconsulting.lsd.distributed.generator.diagram.InteractionGenerator
 import io.lsdconsulting.lsd.distributed.generator.diagram.dto.EventContainer
 import org.springframework.stereotype.Service
-import java.util.*
 
 private val lsd = LsdContext.instance
-private val noColour: Optional<String> = Optional.empty()
+private val noColour: String? = null
 
 @Service
 class LsdGenerator(

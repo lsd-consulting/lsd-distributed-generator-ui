@@ -1,13 +1,16 @@
 package com.lsdconsulting.generatorui.service
 
-import com.lsd.core.domain.*
+import com.lsd.core.domain.Message
+import com.lsd.core.domain.MessageType
+import com.lsd.core.domain.Participant
 import com.lsd.core.domain.ParticipantType.*
+import com.lsd.core.domain.SequenceEvent
 import org.springframework.stereotype.Component
 
 @Component
 class ParticipantListGenerator {
 
-    fun generateParticipants(events: MutableList<SequenceEvent>): Set<Participant> {
+    fun generateParticipants(events: List<SequenceEvent>): Set<Participant> {
         return linkedSetOf<Participant>().also { participants ->
             events.forEach {
                 if (it is Message && it.type != MessageType.SYNCHRONOUS_RESPONSE) {
