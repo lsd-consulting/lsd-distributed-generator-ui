@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
 <head>
     <title>Event Report</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/style.min.css">
 </head>
 <body>
 <main role="main">
+    
     <h1 class="logo">LSD</h1>
-    <h1>Event Report</h1>
-    <article id="1">
-        <span onclick="location.href='#top';" title="top of page" class="back_to_top"></span>
+    <h1>Event Report</h1><article id="1">
+        <span class="articleStart"></span>
         <h2 class="success">Diagram for traceIds</h2>
         <aside class="facts">
             <div class="factTable">
@@ -40,7 +40,7 @@
                     <div class="content">
                         <pre><code id="sequence_uml_code2">@startuml
 
-!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/
+!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/
 
 hide unlinked
 
@@ -131,9 +131,9 @@ remove @unlinked
 </main>
 </body>
 <footer>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/dark.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@3/src/main/resources/static/custom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/custom.min.js"></script>
     <script>
         addSliderForSvgZoom();
         highlightLifelinesWhenClicked();
