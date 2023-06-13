@@ -1,11 +1,11 @@
 package com.lsdconsulting.generatorui
 
 import com.lsd.core.IdGenerator
-import io.lsdconsulting.lsd.distributed.access.model.InteractionType
-import io.lsdconsulting.lsd.distributed.access.model.InteractionType.REQUEST
-import io.lsdconsulting.lsd.distributed.access.model.InteractionType.RESPONSE
-import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
-import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
+import io.lsdconsulting.lsd.distributed.connector.model.InteractionType
+import io.lsdconsulting.lsd.distributed.connector.model.InteractionType.REQUEST
+import io.lsdconsulting.lsd.distributed.connector.model.InteractionType.RESPONSE
+import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
+import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentRepository
 import org.approvaltests.Approvals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

@@ -1,9 +1,9 @@
 package com.lsdconsulting.generatorui.service
 
 import com.lsdconsulting.generatorui.controller.InterceptedFlowResponse
-import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
-import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentAdminRepository
-import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
+import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
+import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentAdminRepository
+import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentRepository
 import org.springframework.stereotype.Service
 import java.time.temporal.ChronoUnit
 

@@ -3,7 +3,7 @@ package com.lsdconsulting.generatorui.controller
 import com.lsdconsulting.generatorui.config.logger.log
 import com.lsdconsulting.generatorui.service.LsdGenerator
 import com.lsdconsulting.generatorui.service.LsdService
-import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
+import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
 import io.lsdconsulting.stub.annotation.GenerateWireMockStub
 import org.springframework.http.MediaType.*
 import org.springframework.http.ResponseEntity

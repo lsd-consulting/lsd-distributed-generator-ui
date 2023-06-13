@@ -4,7 +4,7 @@ import com.lsdconsulting.generatorui.service.LsdGenerator
 import com.lsdconsulting.generatorui.service.LsdService
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
+import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
