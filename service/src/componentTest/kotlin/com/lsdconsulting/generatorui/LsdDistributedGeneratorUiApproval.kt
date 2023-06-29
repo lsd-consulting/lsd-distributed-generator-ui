@@ -7,6 +7,10 @@ import io.lsdconsulting.lsd.distributed.connector.model.InteractionType.RESPONSE
 import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentRepository
 import org.approvaltests.Approvals
+import org.approvaltests.core.Options
+import org.approvaltests.core.Scrubber
+import org.approvaltests.scrubbers.RegExScrubber
+import org.approvaltests.scrubbers.Scrubbers
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -33,6 +37,9 @@ class LsdDistributedGeneratorUiApproval(
     val profile = "TEST"
     val elapsedTime = 25L
     val createdAt: ZonedDateTime = ZonedDateTime.ofInstant(EPOCH, ZoneId.of("UTC"))
+    
+    private val durationScrubber: Scrubber = RegExScrubber(">\\d+\\.\\d+s<", ">0.01s<")
+    private val scrubber = Scrubbers.scrubAll(durationScrubber)
 
     @BeforeEach
     fun resetIdGenerator() {
@@ -52,7 +59,7 @@ class LsdDistributedGeneratorUiApproval(
 
         val result = testRestTemplate.exchange("/lsd/$traceId", HttpMethod.GET, HttpEntity<Nothing>(headers), String::class.java)
 
-        Approvals.verifyHtml(result.body)
+        Approvals.verifyHtml(result.body, Options(scrubber))
     }
 
     private fun buildInterceptedInteraction(

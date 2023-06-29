@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
 <head>
     <title>Event Report</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@6/src/main/resources/static/style.min.css">
+
 </head>
 <body>
 <main role="main">
@@ -29,7 +30,38 @@
                 </div>
             </div>
         </aside>
-        
+        <aside class="metrics">
+            <div class="table">
+                <h3>Metrics</h3>
+                <div class="row">
+                    <div class="rowHead">Name</div>
+                    <div class="rowHead">Value</div>
+                </div><div class="row">
+                    <div class="cell">Time to generate sequence diagram</div>
+                    <div class="cell">0.01s</div>
+                </div><div class="row">
+                    <div class="cell">Time to generate component diagram</div>
+                    <div class="cell">0.01s</div>
+                </div><div class="row">
+                    <div class="cell">Events captured</div>
+                    <div class="cell">2</div>
+                </div><div class="row">
+                    <div class="cell">Messages captured</div>
+                    <div class="cell">2</div>
+                </div><div class="row">
+                    <div class="cell">Top bottlenecks</div>
+                    <div class="cell"><ol><li>
+ <ul>
+  <li>Isolated duration 0.05s</li>
+  <li>[Source -> Target] 0.025s <a href="javascript:scrollIntoViewFor('1');"><sub>[show]</sub></a> <a href="#1"><sub>[open]</sub></a> </li>
+  <li>[Target -> Source] 0.025s <a href="javascript:scrollIntoViewFor('2');"><sub>[show]</sub></a> <a href="#2"><sub>[open]</sub></a> </li>
+  
+  <li>Total 0.05s</li>
+ </ul>
+</li></ol></div>
+                </div>
+            </div>
+        </aside>
         <section class="sequence diagram svg success">
             <h3 class="success">Sequence Diagram</h3>
             <figure><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="254px" preserveAspectRatio="none" style="width:275px;height:254px;background:#FFFFFF;" version="1.1" viewBox="0 0 275 254" width="275px" zoomAndPan="magnify"><defs/><g><line style="stroke:#708090;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="41" x2="41" y1="88.4883" y2="167.1094"/><line style="stroke:#708090;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="234" x2="234" y1="88.4883" y2="167.1094"/><text fill="#8392A2" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="15" y="85.5352">Source</text><ellipse cx="41.5" cy="19.5" fill="#FFA500" rx="8" ry="8" style="stroke:#7D8590;stroke-width:1.5;"/><path d="M41.5,27.5 L41.5,54.5 M28.5,35.5 L54.5,35.5 M41.5,54.5 L28.5,69.5 M41.5,54.5 L54.5,69.5 " fill="none" style="stroke:#7D8590;stroke-width:1.5;"/><text fill="#8392A2" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="15" y="179.6445">Source</text><ellipse cx="41.5" cy="192.0977" fill="#FFA500" rx="8" ry="8" style="stroke:#7D8590;stroke-width:1.5;"/><path d="M41.5,200.0977 L41.5,227.0977 M28.5,208.0977 L54.5,208.0977 M41.5,227.0977 L28.5,242.0977 M41.5,227.0977 L54.5,242.0977 " fill="none" style="stroke:#7D8590;stroke-width:1.5;"/><rect fill="#B0E0E6" height="30.4883" rx="2.5" ry="2.5" style="stroke:#7D8590;stroke-width:1.5;" width="59" x="205" y="57"/><text fill="#8392A2" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45" x="212" y="77.5352">Target</text><rect fill="#B0E0E6" height="30.4883" rx="2.5" ry="2.5" style="stroke:#7D8590;stroke-width:1.5;" width="59" x="205" y="166.1094"/><text fill="#8392A2" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45" x="212" y="186.6445">Target</text><polygon fill="#7D8590" points="222.5,115.7988,232.5,119.7988,222.5,123.7988,226.5,119.7988" style="stroke:#7D8590;stroke-width:1.0;"/><line style="stroke:#7D8590;stroke-width:1.5;" x1="41.5" x2="228.5" y1="119.7988" y2="119.7988"/><a href="#1" target="_self" title="GET /path" xlink:actuate="onRequest" xlink:href="#1" xlink:show="new" xlink:title="GET /path" xlink:type="simple"><text fill="#656D76" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="63" x="48.5" y="115.0566">GET /path</text></a><polygon fill="#7D8590" points="52.5,145.1094,42.5,149.1094,52.5,153.1094,48.5,149.1094" style="stroke:#7D8590;stroke-width:1.0;"/><line style="stroke:#7D8590;stroke-width:1.5;stroke-dasharray:2.0,2.0;" x1="46.5" x2="233.5" y1="149.1094" y2="149.1094"/><a href="#2" target="_self" title="sync 200 response (25 ms)" xlink:actuate="onRequest" xlink:href="#2" xlink:show="new" xlink:title="sync 200 response (25 ms)" xlink:type="simple"><text fill="#656D76" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="169" x="58.5" y="144.3672">sync 200 response (25 ms)</text></a></g></svg></figure>
@@ -41,22 +73,18 @@
                     <div class="content">
                         <pre><code id="sequence_uml_code1">@startuml
 
-!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/
+!theme lsd-light from https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@6/src/main/resources/static/
 skinparam svgLinkTarget _self
 
 hide unlinked
 
 
 
-
 actor Source #orange
-
 participant Target #powderblue
 
 
-
 Source -&gt; Target: [[#1 {GET /path} GET /path]]
-
 Target --&gt; Source: [[#2 {sync 200 response (25 ms)} sync 200 response (25 ms)]]
 
 
@@ -135,7 +163,8 @@ remove @unlinked
 <footer>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/styles/dark.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@5/src/main/resources/static/custom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lsd-consulting/lsd-core@6/src/main/resources/static/custom.min.js"></script>
+
     <script>
         addSliderForSvgZoom();
         highlightLifelinesWhenClicked();
