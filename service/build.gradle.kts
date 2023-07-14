@@ -86,7 +86,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:6.0.1")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:7.0.0")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -109,6 +109,8 @@ dependencies {
     //////////////////////////////////
     // Component test dependencies
     componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    componentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:5.0.0")
 
     componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
