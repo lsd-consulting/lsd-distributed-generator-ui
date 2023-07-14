@@ -49,6 +49,41 @@ configurations["componentTestImplementation"].extendsFrom(configurations.runtime
 tasks.check { dependsOn(componentTest) }
 
 //////////////////////////
+// postgresComponentTest settings
+//////////////////////////
+
+sourceSets.create("postgresComponentTest") {
+    withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
+        kotlin.srcDir("src/postgresComponentTest/kotlin")
+        resources.srcDir("src/postgresComponentTest/resources")
+        compileClasspath += sourceSets["main"].output
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+val postgresComponentTest = task<Test>("postgresComponentTest") {
+    description = "Runs the PostgreSQL component tests"
+    group = "verification"
+    testClassesDirs = sourceSets["postgresComponentTest"].output.classesDirs
+    classpath = sourceSets["postgresComponentTest"].runtimeClasspath
+    testLogging.showStandardStreams = true
+    useJUnitPlatform()
+    mustRunAfter(tasks["componentTest"])
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+val postgresComponentTestImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+val postgresComponentTestRuntimeOnly: Configuration by configurations.getting {
+    extendsFrom(configurations.runtimeOnly.get())
+}
+
+configurations["postgresComponentTestImplementation"].extendsFrom(configurations.runtimeOnly.get())
+
+tasks.check { dependsOn(postgresComponentTest) }
+
+//////////////////////////
 // unit test settings
 //////////////////////////
 
@@ -121,6 +156,25 @@ dependencies {
     componentTestImplementation("com.approvaltests:approvaltests:18.5.0")
     componentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     componentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
+        because("we want to assert nicely")
+    }
+
+    //////////////////////////////////
+    // PostgreSQL component test dependencies
+    postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.1")
+    postgresComponentTestImplementation("com.zaxxer:HikariCP:5.0.1")
+
+    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
+        because("we want to use JUnit 5")
+    }
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.18.3")
+    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.18.3")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.18.3")
+
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:18.5.0")
+    postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
 }
