@@ -2,8 +2,8 @@ import org.gradle.api.JavaVersion.VERSION_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.0"
-    kotlin("plugin.spring") version "1.8.0"
+    kotlin("jvm") version "1.9.0"
+    kotlin("plugin.spring") version "1.9.0"
     id("java-library")
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     java
