@@ -17,36 +17,36 @@ plugins {
 // componentTest settings
 //////////////////////////
 
-sourceSets.create("componentTest") {
+sourceSets.create("mongoComponentTest") {
     withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
-        kotlin.srcDir("src/componentTest/kotlin")
-        resources.srcDir("src/componentTest/resources")
+        kotlin.srcDir("src/mongoComponentTest/kotlin")
+        resources.srcDir("src/mongoComponentTest/resources")
         compileClasspath += sourceSets["main"].output
         runtimeClasspath += output + compileClasspath
     }
 }
 
-val componentTest = task<Test>("componentTest") {
+val mongoComponentTest = task<Test>("mongoComponentTest") {
     description = "Runs the component tests"
     group = "verification"
-    testClassesDirs = sourceSets["componentTest"].output.classesDirs
-    classpath = sourceSets["componentTest"].runtimeClasspath
+    testClassesDirs = sourceSets["mongoComponentTest"].output.classesDirs
+    classpath = sourceSets["mongoComponentTest"].runtimeClasspath
     testLogging.showStandardStreams = true
     useJUnitPlatform()
     mustRunAfter(tasks["test"])
     finalizedBy(tasks.jacocoTestReport)
 }
 
-val componentTestImplementation: Configuration by configurations.getting {
+val mongoComponentTestImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.implementation.get())
 }
-val componentTestRuntimeOnly: Configuration by configurations.getting {
+val mongoComponentTestRuntimeOnly: Configuration by configurations.getting {
     extendsFrom(configurations.runtimeOnly.get())
 }
 
-configurations["componentTestImplementation"].extendsFrom(configurations.runtimeOnly.get())
+configurations["mongoComponentTestImplementation"].extendsFrom(configurations.runtimeOnly.get())
 
-tasks.check { dependsOn(componentTest) }
+tasks.check { dependsOn(mongoComponentTest) }
 
 //////////////////////////
 // postgresComponentTest settings
@@ -68,7 +68,7 @@ val postgresComponentTest = task<Test>("postgresComponentTest") {
     classpath = sourceSets["postgresComponentTest"].runtimeClasspath
     testLogging.showStandardStreams = true
     useJUnitPlatform()
-    mustRunAfter(tasks["componentTest"])
+    mustRunAfter(tasks["mongoComponentTest"])
     finalizedBy(tasks.jacocoTestReport)
 }
 
@@ -143,19 +143,19 @@ dependencies {
 
     //////////////////////////////////
     // Component test dependencies
-    componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
+    mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    componentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:5.0.0")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:5.0.0")
 
-    componentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
+    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
     }
-    componentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
+    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
         because("we want to run tests against a database")
     }
-    componentTestImplementation("com.approvaltests:approvaltests:18.5.0")
-    componentTestImplementation("org.jeasy:easy-random-core:5.0.0")
-    componentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:18.5.0")
+    mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
+    mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
 
