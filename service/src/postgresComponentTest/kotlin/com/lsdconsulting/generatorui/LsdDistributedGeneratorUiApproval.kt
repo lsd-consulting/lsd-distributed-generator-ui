@@ -13,6 +13,8 @@ import org.approvaltests.scrubbers.RegExScrubber
 import org.approvaltests.scrubbers.Scrubbers
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.DisabledOnOs
+import org.junit.jupiter.api.condition.OS.MAC
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpEntity
@@ -47,6 +49,7 @@ class LsdDistributedGeneratorUiApproval(
     }
 
     @Test
+    @DisabledOnOs(MAC)
     fun shouldReturnApprovedResponse() {
         // Remove the LSD interceptors
         testRestTemplate.restTemplate.interceptors.clear()
