@@ -4,8 +4,12 @@ on:
     - cron: '0 3 * * *' # run at 2 AM UTC
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: macos-latest
     steps:
+      - uses: docker-practice/actions-setup-docker@master
+        with:
+          docker_version: "20.10"
+          docker_channel: stable
       - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
