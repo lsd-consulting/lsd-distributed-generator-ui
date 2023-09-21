@@ -1,6 +1,7 @@
 package com.lsdconsulting.generatorui.controller
 
 import com.lsdconsulting.generatorui.config.logger.log
+import com.lsdconsulting.generatorui.service.DiffGenerator
 import com.lsdconsulting.generatorui.service.LsdGenerator
 import com.lsdconsulting.generatorui.service.LsdService
 import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class LsdController(
     private val lsdGenerator: LsdGenerator,
-    private val lsdService: LsdService
+    private val lsdService: LsdService,
+    private val diffGenerator: DiffGenerator,
 ) {
 
     @GetMapping(value  = ["/lsd/{traceId}", "/lsds/{traceId}"], produces = [TEXT_HTML_VALUE])
@@ -39,5 +41,11 @@ class LsdController(
     fun findRecentFlows(@RequestParam(required = false) resultSizeLimit: Int?): ResponseEntity<List<InterceptedFlowResponse>> {
         log().info("Received lsd request for recent flows")
         return ResponseEntity.ok(lsdService.findMostRecentFlows(resultSizeLimit))
+    }
+
+    @GetMapping(value  = ["/lsds/diff"], produces = [TEXT_HTML_VALUE])
+    fun diff(@RequestParam traceId1: String, @RequestParam traceId2: String): String {
+        log().info("Received lsd request for a diff between traceId1={} and traceId2={}", traceId1, traceId2)
+        return diffGenerator.sourceDiff(traceId1, traceId2)
     }
 }
