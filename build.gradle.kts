@@ -2,14 +2,14 @@ import org.gradle.api.JavaVersion.VERSION_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.0"
-    kotlin("plugin.spring") version "1.9.0"
+    kotlin("jvm") version "1.9.10"
+    kotlin("plugin.spring") version "1.9.10"
     id("java-library")
-    id("io.spring.dependency-management") version "1.0.9.RELEASE"
+    id("io.spring.dependency-management") version "1.1.3"
     java
     `maven-publish`
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("com.palantir.git-version") version "0.12.3"
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    id("com.palantir.git-version") version "3.0.0"
 }
 
 nexusPublishing.repositories.sonatype {
