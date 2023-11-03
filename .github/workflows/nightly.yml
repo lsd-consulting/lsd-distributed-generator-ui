@@ -5,7 +5,7 @@ on:
     - cron: '0 3 * * *' # run at 2 AM UTC
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -13,5 +13,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+      - name: Setup Docker on macOS
+        uses: douglascamata/setup-docker-macos-action@v1-alpha
       - name: Build with Gradle
         run: ./gradlew build
