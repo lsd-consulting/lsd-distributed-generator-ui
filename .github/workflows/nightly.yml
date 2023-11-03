@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: docker-practice/actions-setup-docker@v1
         with:
-          docker_version: "20.10"
+          docker_version: "24.0"
           docker_channel: stable
       - uses: actions/checkout@v3
       - name: Set up JDK 17
