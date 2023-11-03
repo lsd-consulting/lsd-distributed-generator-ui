@@ -7,10 +7,6 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: docker-practice/actions-setup-docker@main
-        with:
-          docker_version: "24.0"
-          docker_channel: stable
       - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
