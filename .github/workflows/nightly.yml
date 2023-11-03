@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
+      - uses: docker-practice/actions-setup-docker@main
         with:
           docker_version: "24.0"
           docker_channel: stable
