@@ -1,12 +1,13 @@
 name: Nightly Build
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 3 * * *' # run at 2 AM UTC
 jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: docker-practice/actions-setup-docker@master
+      - uses: docker-practice/actions-setup-docker@v1
         with:
           docker_version: "20.10"
           docker_channel: stable
