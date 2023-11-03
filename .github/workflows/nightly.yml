@@ -5,7 +5,7 @@ on:
     - cron: '0 3 * * *' # run at 2 AM UTC
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
