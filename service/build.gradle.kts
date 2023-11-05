@@ -108,10 +108,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.1.2") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.2.0") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.1.2")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.2.0")
     compileOnly("com.github.tomakehurst:wiremock-jre8:2.35.0")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
@@ -121,7 +121,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:7.1.1")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:7.2.9")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -145,7 +145,7 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:5.0.0")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:5.0.4")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
@@ -163,7 +163,7 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.3")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.8")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:5.0.1")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
