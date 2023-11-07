@@ -131,14 +131,14 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     testImplementation("org.junit.platform:junit-platform-commons:1.9.2")
 
-    testImplementation("io.mockk:mockk:1.13.4") {
+    testImplementation("io.mockk:mockk:1.13.8") {
         because("we want to mock objects")
     }
 
     testImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
-    testImplementation("org.apache.commons:commons-lang3:3.12.0")
+    testImplementation("org.apache.commons:commons-lang3:3.13.0")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
@@ -164,7 +164,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.8")
-    postgresComponentTestImplementation("com.zaxxer:HikariCP:5.0.1")
+    postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
