@@ -129,7 +129,7 @@ dependencies {
         because("we want to use JUnit 5")
     }
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    testImplementation("org.junit.platform:junit-platform-commons:1.9.2")
+    testImplementation("org.junit.platform:junit-platform-commons:1.10.1")
 
     testImplementation("io.mockk:mockk:1.13.8") {
         because("we want to mock objects")
