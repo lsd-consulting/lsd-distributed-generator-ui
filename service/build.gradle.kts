@@ -112,7 +112,7 @@ dependencies {
         because("we want to generate WireMock stubs for client")
     }
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.2.0")
-    compileOnly("com.github.tomakehurst:wiremock-jre8:2.35.0")
+    compileOnly("com.github.tomakehurst:wiremock-jre8:3.0.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
     implementation("org.apache.commons:commons-collections4:4.4")
