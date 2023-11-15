@@ -121,7 +121,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:7.2.10")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:7.2.13")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -163,7 +163,7 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.8")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.9")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
