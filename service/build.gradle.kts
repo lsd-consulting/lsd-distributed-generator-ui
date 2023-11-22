@@ -138,7 +138,7 @@ dependencies {
     testImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
-    testImplementation("org.apache.commons:commons-lang3:3.13.0")
+    testImplementation("org.apache.commons:commons-lang3:3.14.0")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
