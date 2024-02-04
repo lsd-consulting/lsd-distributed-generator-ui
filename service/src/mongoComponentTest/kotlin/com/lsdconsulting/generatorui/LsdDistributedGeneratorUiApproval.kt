@@ -25,9 +25,11 @@ import java.time.ZonedDateTime
 
 class LsdDistributedGeneratorUiApproval(
     @Autowired private val interceptedDocumentRepository: InterceptedDocumentRepository,
-    @Autowired private val testRestTemplate: TestRestTemplate,
     @Autowired private val idGenerator: IdGenerator
 ): ComponentTestBase() {
+
+    @Autowired
+    private lateinit var testRestTemplate: TestRestTemplate
 
     val traceId = "someTraceId"
     val body = "someBody"
@@ -37,7 +39,7 @@ class LsdDistributedGeneratorUiApproval(
     val profile = "TEST"
     val elapsedTime = 25L
     val createdAt: ZonedDateTime = ZonedDateTime.ofInstant(EPOCH, ZoneId.of("UTC"))
-    
+
     private val durationScrubber: Scrubber = RegExScrubber(">\\d+\\.\\d+s<", ">0.01s<")
     private val scrubber = Scrubbers.scrubAll(durationScrubber)
 

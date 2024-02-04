@@ -11,8 +11,6 @@ import io.lsdconsulting.lsd.distributed.connector.model.InteractionType
 import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.postgres.config.LibraryConfig
 import org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric
-import org.apache.commons.lang3.RandomUtils
-import org.apache.commons.lang3.RandomUtils.nextLong
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
@@ -27,6 +25,7 @@ import org.springframework.test.context.ActiveProfiles
 import org.testcontainers.containers.PostgreSQLContainer
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.util.*
 
 private const val POSTGRES_PORT = 5432
 private const val POSTGRES_IMAGE = "postgres:15.3-alpine3.18"
@@ -91,11 +90,11 @@ class ComponentTestBase {
         serviceName = randomAlphanumeric(30),
         target = randomAlphanumeric(30),
         path = randomAlphanumeric(100),
-        httpStatus = HttpStatus.entries[RandomUtils.nextInt(0, HttpStatus.entries.size - 1)].name,
-        httpMethod = HttpMethod.entries[RandomUtils.nextInt(0, HttpMethod.entries.size - 1)].name,
-        interactionType = InteractionType.entries[RandomUtils.nextInt(0, InteractionType.entries.size - 1)],
+        httpStatus = HttpStatus.entries[Random().nextInt(0, HttpStatus.entries.size - 1)].name,
+        httpMethod = HttpMethod.values()[Random().nextInt(0, HttpMethod.values().size - 1)].name(),
+        interactionType = InteractionType.entries[Random().nextInt(0, InteractionType.entries.size - 1)],
         profile = randomAlphanumeric(20),
-        elapsedTime = nextLong(),
+        elapsedTime = Random().nextLong(),
         createdAt = ZonedDateTime.now(ZoneId.of("UTC"))
     )
 }
