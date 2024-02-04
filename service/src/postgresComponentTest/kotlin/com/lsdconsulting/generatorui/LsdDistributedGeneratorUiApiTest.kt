@@ -19,9 +19,10 @@ import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit.MILLIS
 
 
-class LsdDistributedGeneratorUiApiTest(
-    @Autowired private val testRestTemplate: TestRestTemplate
-) : ComponentTestBase() {
+class LsdDistributedGeneratorUiApiTest: ComponentTestBase() {
+
+    @Autowired
+    private lateinit var testRestTemplate: TestRestTemplate
 
     private lateinit var interceptedInteraction: InterceptedInteraction
 
@@ -54,7 +55,7 @@ class LsdDistributedGeneratorUiApiTest(
         val result = testRestTemplate.exchange(url, GET, HttpEntity<Nothing>(headers),
             object : ParameterizedTypeReference<List<InterceptedInteraction>>() {})
 
-        assertThat(result.body!!, equalTo(listOf(interceptedInteraction)))
+        assertThat(result.body!!, equalTo(listOf(interceptedInteraction.copy(createdAt = interceptedInteraction.createdAt.withFixedOffsetZone()))))
     }
 
     @Test
@@ -68,7 +69,7 @@ class LsdDistributedGeneratorUiApiTest(
         val result = testRestTemplate.exchange(url, GET, HttpEntity<Nothing>(headers),
             object : ParameterizedTypeReference<List<InterceptedInteraction>>() {})
 
-        assertThat(result.body!!, equalTo(listOf(interceptedInteraction, secondInterceptedInteraction)))
+        assertThat(result.body!!, equalTo(listOf(interceptedInteraction.copy(createdAt = interceptedInteraction.createdAt.withFixedOffsetZone()), secondInterceptedInteraction.copy(createdAt = secondInterceptedInteraction.createdAt.withFixedOffsetZone()))))
     }
 
     private fun saveInterceptedInteraction(): InterceptedInteraction {

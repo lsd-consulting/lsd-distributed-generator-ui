@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "2.7.10"
+    id("org.springframework.boot") version "3.2.2"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -112,7 +112,7 @@ dependencies {
         because("we want to generate WireMock stubs for client")
     }
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.2.0")
-    compileOnly("com.github.tomakehurst:wiremock-jre8:2.35.0")
+    compileOnly("org.wiremock:wiremock-standalone:3.3.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
     implementation("org.apache.commons:commons-collections4:4.4")
@@ -121,7 +121,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:7.2.13")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.0.0")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -129,7 +129,7 @@ dependencies {
         because("we want to use JUnit 5")
     }
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    testImplementation("org.junit.platform:junit-platform-commons:1.10.1")
+    testImplementation("org.junit.platform:junit-platform-commons:1.9.2")
 
     testImplementation("io.mockk:mockk:1.13.8") {
         because("we want to mock objects")
@@ -145,8 +145,9 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:5.0.6")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.0.0")
 
+    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
     }
@@ -163,9 +164,10 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:1.0.9")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:2.0.0")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
 
+    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
         because("we want to use JUnit 5")
     }

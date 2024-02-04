@@ -2,8 +2,8 @@ import org.gradle.api.JavaVersion.VERSION_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.21"
-    kotlin("plugin.spring") version "1.9.20"
+    kotlin("jvm") version "1.9.22"
+    kotlin("plugin.spring") version "1.9.22"
     id("java-library")
     id("io.spring.dependency-management") version "1.1.4"
     java
@@ -49,7 +49,7 @@ allprojects {
         mavenCentral()
     }
 
-    extra["springCloudVersion"] = "2021.0.6"
+    extra["springCloudVersion"] = "2023.0.0"
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
