@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "3.2.2"
+    id("org.springframework.boot") version "3.2.4"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -108,53 +108,53 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:2.2.0") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.1") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:2.2.0")
-    compileOnly("org.wiremock:wiremock-standalone:3.3.1")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.1")
+    compileOnly("org.wiremock:wiremock-standalone:3.5.2")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
     implementation("org.apache.commons:commons-collections4:4.4")
-    implementation("org.apache.httpcomponents:httpcore:4.4.15") {
+    implementation("org.apache.httpcomponents:httpcore:4.4.16") {
         because("it's needed for DB connection security")
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.0.0")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.0.19")
 
     //////////////////////////////////
     // Unit test dependencies
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2") {
         because("we want to use JUnit 5")
     }
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    testImplementation("org.junit.platform:junit-platform-commons:1.9.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
+    testImplementation("org.junit.platform:junit-platform-commons:1.10.2")
 
-    testImplementation("io.mockk:mockk:1.13.8") {
+    testImplementation("io.mockk:mockk:1.13.10") {
         because("we want to mock objects")
     }
 
     testImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
-    testImplementation("org.apache.commons:commons-lang3:3.13.0")
+    testImplementation("org.apache.commons:commons-lang3:3.14.0")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.0.0")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.0.4")
 
-    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
+    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
+    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
+    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.12.2") {
         because("we want to run tests against a database")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:22.2.1")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:23.0.1")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -167,15 +167,15 @@ dependencies {
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:2.0.0")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
 
-    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2") {
+    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
+    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2") {
         because("we want to use JUnit 5")
     }
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.18.3")
-    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.18.3")
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.18.3")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.19.7")
+    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.19.7")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.19.7")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:22.2.1")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:23.0.1")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
