@@ -5,7 +5,7 @@ plugins {
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.spring") version "1.9.23"
     id("java-library")
-    id("io.spring.dependency-management") version "1.1.4"
+    id("io.spring.dependency-management") version "1.1.5"
     java
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
