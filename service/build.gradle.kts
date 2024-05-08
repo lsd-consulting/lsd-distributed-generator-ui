@@ -12,9 +12,10 @@ plugins {
     id("kotlin-kapt")
 }
 
+tasks.withType<Copy>().all { duplicatesStrategy = DuplicatesStrategy.EXCLUDE }
 
 //////////////////////////
-// componentTest settings
+// mongoComponentTest settings
 //////////////////////////
 
 sourceSets.create("mongoComponentTest") {
@@ -108,10 +109,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.3") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.4") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.3")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.4")
     compileOnly("org.wiremock:wiremock-standalone:3.5.4")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
@@ -151,7 +152,7 @@ dependencies {
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.12.6") {
+    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
         because("we want to run tests against a database")
     }
     mongoComponentTestImplementation("com.approvaltests:approvaltests:23.1.0")

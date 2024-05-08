@@ -16,7 +16,7 @@ class TestRepository {
 
     fun clearTable(dataSource: DataSource) {
         dataSource.connection.use { con ->
-            con.prepareStatement("truncate lsd.intercepted_interactions").use { pst ->
+            con.prepareStatement("truncate intercepted_interactions").use { pst ->
                 pst.executeUpdate()
             }
         }
