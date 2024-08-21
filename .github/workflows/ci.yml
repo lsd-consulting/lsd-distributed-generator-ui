@@ -16,19 +16,9 @@ jobs:
     uses: lsd-consulting/shared-workflows/.github/workflows/build.yml@main
     with:
       operating-system: ubuntu-latest
+      artifact-path: service/src/postgresComponentTest/kotlin/com/lsdconsulting/generatorui
       java-version: '17'
       codecov: true
-  upload:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/upload-artifact@v4
-        with:
-          name: postgres-approvals
-          path: service/src/postgresComponentTest/kotlin/com/lsdconsulting/generatorui
-      - uses: actions/upload-artifact@v4
-        with:
-          name: mongo-approvals
-          path: service/src/mongoComponentTest/kotlin/com/lsdconsulting/generatorui
   release:
     needs: build
     uses: lsd-consulting/shared-workflows/.github/workflows/release.yml@main
