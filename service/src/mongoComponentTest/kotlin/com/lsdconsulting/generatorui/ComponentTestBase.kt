@@ -6,11 +6,11 @@ import io.lsdconsulting.lsd.distributed.mongo.config.LibraryConfig
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 import org.springframework.context.annotation.Import
 import org.springframework.test.context.ActiveProfiles
 
-@SpringBootTest(webEnvironment = DEFINED_PORT, classes = [LsdGeneratorUiApplication::class])
+@SpringBootTest(webEnvironment = RANDOM_PORT, classes = [LsdGeneratorUiApplication::class])
 @ActiveProfiles("test")
 @Import(RepositoryConfig::class, LibraryConfig::class)
 class ComponentTestBase {
