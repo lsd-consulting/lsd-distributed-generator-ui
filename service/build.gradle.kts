@@ -172,9 +172,9 @@ dependencies {
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2") {
         because("we want to use JUnit 5")
     }
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.19.7")
-    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.19.7")
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.19.7")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.1")
+    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.1")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.1")
 
     postgresComponentTestImplementation("com.approvaltests:approvaltests:23.1.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
