@@ -15,6 +15,7 @@ jobs:
   build:
     uses: lsd-consulting/shared-workflows/.github/workflows/build.yml@main
     with:
+      operating-system: ubuntu-latest
       java-version: '17'
       codecov: true
   release:
