@@ -152,7 +152,7 @@ dependencies {
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
+    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.16.2") {
         because("we want to run tests against a database")
     }
     mongoComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
