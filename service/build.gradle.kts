@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "3.3.2"
+    id("org.springframework.boot") version "3.2.5"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -126,11 +126,11 @@ dependencies {
 
     //////////////////////////////////
     // Unit test dependencies
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0") {
+    testImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.11.0")
-    testImplementation("org.junit.platform:junit-platform-commons:1.11.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.platform:junit-platform-commons")
 
     testImplementation("io.mockk:mockk:1.13.12") {
         because("we want to mock objects")
@@ -148,11 +148,11 @@ dependencies {
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.0.17")
 
-    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.11.0")
-    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0") {
+    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
+    mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.16.2") {
+    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
         because("we want to run tests against a database")
     }
     mongoComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
@@ -168,8 +168,8 @@ dependencies {
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.1.1")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
 
-    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine:5.11.0")
-    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0") {
+    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
+    postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.1")
