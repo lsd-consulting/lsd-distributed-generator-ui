@@ -146,13 +146,13 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.0.17")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.0.18")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
+    mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.17.0") {
         because("we want to run tests against a database")
     }
     mongoComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
