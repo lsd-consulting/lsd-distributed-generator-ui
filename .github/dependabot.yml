@@ -16,4 +16,5 @@ updates:
       other-dependencies:
         patterns:
           - "*"
-
+        exclude-patterns:
+          - "*flapdoodle*"
