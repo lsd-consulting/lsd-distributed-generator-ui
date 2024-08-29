@@ -165,7 +165,7 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.1.1")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.1.5")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
