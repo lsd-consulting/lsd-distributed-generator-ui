@@ -109,10 +109,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.4") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.6") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.4")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.6")
     compileOnly("org.wiremock:wiremock-standalone:3.9.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.2")
