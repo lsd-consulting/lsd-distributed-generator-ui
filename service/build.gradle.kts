@@ -155,7 +155,7 @@ dependencies {
     mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
         because("we want to run tests against a database")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.5.0")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -176,7 +176,7 @@ dependencies {
     postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.1")
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.1")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.5.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
