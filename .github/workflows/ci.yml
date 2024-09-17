@@ -16,7 +16,7 @@ jobs:
     uses: lsd-consulting/shared-workflows/.github/workflows/build.yml@main
     with:
       operating-system: ubuntu-latest
-      artifact-path: service/src/postgresComponentTest/kotlin/com/lsdconsulting/generatorui
+      artifact-path: '**/build/reports'
       java-version: '17'
       codecov: true
     secrets: inherit
