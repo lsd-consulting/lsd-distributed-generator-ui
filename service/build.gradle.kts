@@ -109,10 +109,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.6") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.9") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.6")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.9")
     compileOnly("org.wiremock:wiremock-standalone:3.9.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.2")
@@ -122,7 +122,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.1.23")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.1.25")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -155,7 +155,7 @@ dependencies {
     mongoComponentTestImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.4") {
         because("we want to run tests against a database")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.5.0")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -176,7 +176,7 @@ dependencies {
     postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.1")
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.1")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.4.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.5.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
