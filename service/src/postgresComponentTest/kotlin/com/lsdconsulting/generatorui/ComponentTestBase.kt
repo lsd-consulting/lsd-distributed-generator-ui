@@ -61,7 +61,7 @@ class ComponentTestBase {
                 cmd.withHostConfig(
                     HostConfig().withPortBindings(
                         PortBinding(
-                            Ports.Binding.bindPort(POSTGRES_PORT), ExposedPort(
+                            Ports.Binding.bindPort(5433), ExposedPort(
                                 POSTGRES_PORT
                             )
                         )
