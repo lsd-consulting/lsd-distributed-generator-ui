@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "3.2.5"
+    id("org.springframework.boot") version "3.3.3"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -122,7 +122,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.1.25")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.1")
 
     //////////////////////////////////
     // Unit test dependencies
