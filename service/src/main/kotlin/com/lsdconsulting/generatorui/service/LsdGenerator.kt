@@ -5,7 +5,6 @@ import io.lsdconsulting.lsd.distributed.generator.diagram.InteractionGenerator
 import io.lsdconsulting.lsd.distributed.generator.diagram.dto.EventContainer
 import org.springframework.stereotype.Service
 
-private val lsd = LsdContext.instance
 private val noColour: String? = null
 
 @Service
@@ -13,12 +12,13 @@ class LsdGenerator(
     private val interactionGenerator: InteractionGenerator,
     private val participantListGenerator: ParticipantListGenerator,
 ) {
-    
+
     fun captureInteractionsFromDatabase(vararg traceIds: String): String {
         val eventContainer = interactionGenerator.generate(traceIds.associateWith { noColour })
         val sequenceEvents = eventContainer.events
         val participants = participantListGenerator.generateParticipants(sequenceEvents)
 
+        val lsd = LsdContext.instance
         lsd.clear()
         lsd.addFacts(traceIds = traceIds, eventContainer = eventContainer)
         lsd.addParticipants(participants = participants.toTypedArray())
