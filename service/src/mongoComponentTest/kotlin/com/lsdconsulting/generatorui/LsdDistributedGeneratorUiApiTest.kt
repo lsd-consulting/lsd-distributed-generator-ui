@@ -17,11 +17,13 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod.GET
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.http.MediaType.TEXT_HTML
+import org.springframework.test.annotation.DirtiesContext
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit.MILLIS
 
 
+@DirtiesContext
 class LsdDistributedGeneratorUiApiTest: ComponentTestBase() {
 
     @Autowired

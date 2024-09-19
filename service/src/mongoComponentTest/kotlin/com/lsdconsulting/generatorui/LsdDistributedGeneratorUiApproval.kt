@@ -1,6 +1,5 @@
 package com.lsdconsulting.generatorui
 
-import com.lsd.core.IdGenerator
 import io.lsdconsulting.lsd.distributed.connector.model.InteractionType
 import io.lsdconsulting.lsd.distributed.connector.model.InteractionType.REQUEST
 import io.lsdconsulting.lsd.distributed.connector.model.InteractionType.RESPONSE
@@ -11,7 +10,6 @@ import org.approvaltests.core.Options
 import org.approvaltests.core.Scrubber
 import org.approvaltests.scrubbers.RegExScrubber
 import org.approvaltests.scrubbers.Scrubbers
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -19,13 +17,14 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.MediaType.TEXT_HTML
+import org.springframework.test.annotation.DirtiesContext
 import java.time.Instant.EPOCH
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
+@DirtiesContext
 class LsdDistributedGeneratorUiApproval(
     @Autowired private val interceptedDocumentRepository: InterceptedDocumentRepository,
-    @Autowired private val idGenerator: IdGenerator
 ): ComponentTestBase() {
 
     @Autowired
@@ -42,11 +41,6 @@ class LsdDistributedGeneratorUiApproval(
 
     private val durationScrubber: Scrubber = RegExScrubber(">\\d+\\.\\d+s<", ">0.01s<")
     private val scrubber = Scrubbers.scrubAll(durationScrubber)
-
-    @BeforeEach
-    fun resetIdGenerator() {
-        idGenerator.reset()
-    }
 
     @Test
     fun shouldReturnApprovedResponse() {
@@ -80,5 +74,6 @@ class LsdDistributedGeneratorUiApproval(
         interactionType = type,
         profile = profile,
         elapsedTime = elapsedTime,
-        createdAt = createdAt)
+        createdAt = createdAt
+    )
 }
