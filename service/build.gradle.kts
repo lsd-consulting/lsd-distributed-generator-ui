@@ -158,7 +158,7 @@ dependencies {
     mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.1") {
         because("we want to test against a real MongoDb in Docker")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.5.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.6.0")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -169,7 +169,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.1.6")
-    postgresComponentTestImplementation("com.zaxxer:HikariCP:5.1.0")
+    postgresComponentTestImplementation("com.zaxxer:HikariCP:6.0.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
@@ -179,7 +179,7 @@ dependencies {
     postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.1")
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.1")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.5.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.6.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
