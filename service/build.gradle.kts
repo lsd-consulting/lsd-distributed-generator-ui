@@ -122,7 +122,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.11")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.12")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -146,7 +146,7 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.4")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.5")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.2.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.2.0")
 
