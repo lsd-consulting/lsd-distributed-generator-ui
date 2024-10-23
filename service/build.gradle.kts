@@ -113,7 +113,7 @@ dependencies {
         because("we want to generate WireMock stubs for client")
     }
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.0.22")
-    compileOnly("org.wiremock:wiremock-standalone:3.9.1")
+    compileOnly("org.wiremock:wiremock-standalone:3.9.2")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.0")
     implementation("org.apache.commons:commons-collections4:4.4")
@@ -154,8 +154,8 @@ dependencies {
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.2")
-    mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.2") {
+    mongoComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.3")
+    mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.3") {
         because("we want to test against a real MongoDb in Docker")
     }
     mongoComponentTestImplementation("com.approvaltests:approvaltests:24.8.0")
@@ -175,9 +175,9 @@ dependencies {
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.2")
-    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.2")
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.2")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.3")
+    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.3")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.3")
 
     postgresComponentTestImplementation("com.approvaltests:approvaltests:24.8.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
