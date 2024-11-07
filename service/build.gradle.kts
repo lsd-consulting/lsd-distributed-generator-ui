@@ -122,7 +122,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.20")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.21")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -146,7 +146,7 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.6")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.7")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.2.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.2.0")
 
@@ -168,7 +168,7 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.1.6")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.2.0")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:6.1.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
