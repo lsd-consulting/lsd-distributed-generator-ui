@@ -132,7 +132,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.junit.platform:junit-platform-commons")
 
-    testImplementation("io.mockk:mockk:1.13.13") {
+    testImplementation("io.mockk:mockk:1.13.14") {
         because("we want to mock objects")
     }
 
