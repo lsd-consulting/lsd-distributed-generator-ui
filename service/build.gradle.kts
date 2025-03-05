@@ -154,8 +154,8 @@ dependencies {
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.5")
-    mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.5") {
+    mongoComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.6")
+    mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.6") {
         because("we want to test against a real MongoDb in Docker")
     }
     mongoComponentTestImplementation("com.approvaltests:approvaltests:24.17.0")
@@ -175,9 +175,9 @@ dependencies {
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.5")
-    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.5")
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.5")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.6")
+    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.6")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.6")
 
     postgresComponentTestImplementation("com.approvaltests:approvaltests:24.17.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
