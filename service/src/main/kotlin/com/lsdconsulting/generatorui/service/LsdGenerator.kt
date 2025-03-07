@@ -3,7 +3,9 @@ package com.lsdconsulting.generatorui.service
 import com.lsd.core.LsdContext
 import io.lsdconsulting.lsd.distributed.generator.diagram.InteractionGenerator
 import io.lsdconsulting.lsd.distributed.generator.diagram.dto.EventContainer
+import org.springframework.boot.convert.DurationStyle.SIMPLE
 import org.springframework.stereotype.Service
+import java.time.Duration
 
 private val noColour: String? = null
 
@@ -32,4 +34,8 @@ private fun LsdContext.addFacts(vararg traceIds: String, eventContainer: EventCo
     addFact("traceIds", traceIds.joinToString())
     eventContainer.startTime?.let { addFact("startTime", it.toString()) }
     eventContainer.finishTime?.let { addFact("finishTime", it.toString()) }
+    if (eventContainer.startTime != null && eventContainer.finishTime != null) {
+        val totalElapsedTime = Duration.between(eventContainer.startTime, eventContainer.finishTime)
+        addFact("totalElapsedTime", SIMPLE.print(totalElapsedTime))
+    }
 }
