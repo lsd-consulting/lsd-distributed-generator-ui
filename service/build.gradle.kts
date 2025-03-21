@@ -147,8 +147,8 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.8")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.3.1")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.3.1")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.4.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.4.0")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
@@ -158,7 +158,7 @@ dependencies {
     mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.6") {
         because("we want to test against a real MongoDb in Docker")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.18.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.19.0")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -179,7 +179,7 @@ dependencies {
     postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.6")
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.6")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.18.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.19.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
