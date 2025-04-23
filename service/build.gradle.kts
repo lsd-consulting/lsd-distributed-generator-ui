@@ -109,20 +109,20 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.20") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.24") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.20")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.24")
     compileOnly("org.wiremock:wiremock-standalone:3.12.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.3")
-    implementation("org.apache.commons:commons-collections4:4.4")
+    implementation("org.apache.commons:commons-collections4:4.5.0")
     implementation("org.apache.httpcomponents:httpcore:4.4.16") {
         because("it's needed for DB connection security")
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.37")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.38")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -132,7 +132,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.junit.platform:junit-platform-commons")
 
-    testImplementation("io.mockk:mockk:1.13.17") {
+    testImplementation("io.mockk:mockk:1.14.0") {
         because("we want to mock objects")
     }
 
@@ -158,7 +158,7 @@ dependencies {
     mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.6") {
         because("we want to test against a real MongoDb in Docker")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.19.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.21.0")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -179,7 +179,7 @@ dependencies {
     postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.6")
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.6")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.19.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.21.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
