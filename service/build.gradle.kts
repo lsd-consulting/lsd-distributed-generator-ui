@@ -19,12 +19,10 @@ tasks.withType<Copy>().all { duplicatesStrategy = DuplicatesStrategy.EXCLUDE }
 //////////////////////////
 
 sourceSets.create("mongoComponentTest") {
-    withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
-        kotlin.srcDir("src/mongoComponentTest/kotlin")
-        resources.srcDir("src/mongoComponentTest/resources")
-        compileClasspath += sourceSets["main"].output
-        runtimeClasspath += output + compileClasspath
-    }
+    kotlin.srcDir("src/mongoComponentTest/kotlin")
+    resources.srcDir("src/mongoComponentTest/resources")
+    compileClasspath += sourceSets["main"].output
+    runtimeClasspath += output + compileClasspath
 }
 
 val mongoComponentTest = task<Test>("mongoComponentTest") {
@@ -54,12 +52,10 @@ tasks.check { dependsOn(mongoComponentTest) }
 //////////////////////////
 
 sourceSets.create("postgresComponentTest") {
-    withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
-        kotlin.srcDir("src/postgresComponentTest/kotlin")
-        resources.srcDir("src/postgresComponentTest/resources")
-        compileClasspath += sourceSets["main"].output
-        runtimeClasspath += output + compileClasspath
-    }
+    kotlin.srcDir("src/postgresComponentTest/kotlin")
+    resources.srcDir("src/postgresComponentTest/resources")
+    compileClasspath += sourceSets["main"].output
+    runtimeClasspath += output + compileClasspath
 }
 
 val postgresComponentTest = task<Test>("postgresComponentTest") {
@@ -193,7 +189,7 @@ val compileJava = project.tasks.named("compileJava").get() as JavaCompile
 tasks.register<JavaCompile>("compileStubs") {
     classpath = compileJava.classpath
     source = project.layout.buildDirectory.dir("generated-stub-sources").get().asFileTree
-    val stubsClassesDir = project.buildDir.resolve("generated-stub-classes")
+    val stubsClassesDir = project.layout.buildDirectory.dir("generated-stub-classes").get().asFile
     destinationDirectory.set(stubsClassesDir)
 }
 compileJava.finalizedBy(tasks.getByName("compileStubs"))
@@ -215,17 +211,17 @@ compileJavaStubs.finalizedBy(tasks.getByName("stubsJar"))
 //////////////////////////
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.12"
 }
 
 tasks.jacocoTestReport {
     executionData(
-        file("${project.buildDir}/jacoco/componentTest.exec")
+        project.layout.buildDirectory.file("jacoco/componentTest.exec").get().asFile
     )
     reports {
         xml.required.set(true)
         html.required.set(true)
-        html.setDestination(project.provider { File("${project.buildDir}/reports/coverage") })
+        html.outputLocation.set(layout.buildDirectory.dir("reports/coverage"))
     }
 }
 

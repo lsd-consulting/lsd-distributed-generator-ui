@@ -1,4 +1,5 @@
 import org.gradle.api.JavaVersion.VERSION_17
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -52,9 +53,9 @@ allprojects {
     extra["springCloudVersion"] = "2023.0.0"
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = listOf("-Xjsr305=strict")
-            jvmTarget = "17"
+        compilerOptions {
+            freeCompilerArgs.set(listOf("-Xjsr305=strict"))
+            jvmTarget.set(JVM_17)
         }
     }
 
