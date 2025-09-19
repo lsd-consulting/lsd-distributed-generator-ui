@@ -105,10 +105,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.20") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.20")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27")
     compileOnly("org.wiremock:wiremock-standalone:3.12.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.3")
@@ -118,7 +118,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:8.2.37")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:745ca0c")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -142,7 +142,7 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.10")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.13")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.4.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.4.0")
 
@@ -164,7 +164,7 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.2.0")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.2.1")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:6.3.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
