@@ -109,10 +109,10 @@ dependencies {
         because("we want to generate WireMock stubs for client")
     }
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.20")
-    compileOnly("org.wiremock:wiremock-standalone:3.12.1")
+    compileOnly("org.wiremock:wiremock-standalone:3.13.1")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.3")
-    implementation("org.apache.commons:commons-collections4:4.4")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.20.0")
+    implementation("org.apache.commons:commons-collections4:4.5.0")
     implementation("org.apache.httpcomponents:httpcore:4.4.16") {
         because("it's needed for DB connection security")
     }
@@ -128,14 +128,14 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.junit.platform:junit-platform-commons")
 
-    testImplementation("io.mockk:mockk:1.13.17") {
+    testImplementation("io.mockk:mockk:1.14.5") {
         because("we want to mock objects")
     }
 
     testImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
-    testImplementation("org.apache.commons:commons-lang3:3.17.0")
+    testImplementation("org.apache.commons:commons-lang3:3.18.0")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
@@ -143,18 +143,18 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.10")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.4.0")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.4.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.6.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.6.0")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    mongoComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.6")
-    mongoComponentTestImplementation("org.testcontainers:mongodb:1.20.6") {
+    mongoComponentTestImplementation("org.testcontainers:junit-jupiter:1.21.3")
+    mongoComponentTestImplementation("org.testcontainers:mongodb:1.21.3") {
         because("we want to test against a real MongoDb in Docker")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:24.19.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:25.4.3")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -165,17 +165,17 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:3.2.0")
-    postgresComponentTestImplementation("com.zaxxer:HikariCP:6.3.0")
+    postgresComponentTestImplementation("com.zaxxer:HikariCP:7.0.2")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
         because("we want to use JUnit 5")
     }
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.6")
-    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.20.6")
-    postgresComponentTestImplementation("org.testcontainers:postgresql:1.20.6")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.21.3")
+    postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.21.3")
+    postgresComponentTestImplementation("org.testcontainers:postgresql:1.21.3")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:24.19.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:25.4.3")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
