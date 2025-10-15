@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.1.20"
-    kotlin("plugin.spring") version "2.1.20"
+    kotlin("plugin.spring") version "2.2.20"
     id("java-library")
     id("io.spring.dependency-management") version "1.1.7"
     java
