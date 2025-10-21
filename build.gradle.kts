@@ -18,12 +18,12 @@ nexusPublishing.repositories.sonatype {
     snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
 }
 
-tasks.create("installGitHooks") {
+tasks.register<Exec>("installGitHooks") {
     shouldRunAfter("clean")
-    println("-- Configuring git to use .githooks --")
-    project.exec {
-        commandLine("git", "config", "core.hooksPath", ".githooks")
+    doFirst {
+        println("-- Configuring git to use .githooks --")
     }
+    commandLine("git", "config", "core.hooksPath", ".githooks")
 }
 
 val gitVersion: groovy.lang.Closure<String> by extra
