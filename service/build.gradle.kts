@@ -129,7 +129,7 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-commons")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation("io.mockk:mockk:1.13.17") {
+    testImplementation("io.mockk:mockk:1.14.6") {
         because("we want to mock objects")
     }
 
