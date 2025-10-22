@@ -15,7 +15,7 @@ jobs:
   build:
     uses: lsd-consulting/shared-workflows/.github/workflows/build.yml@main
     with:
-      operating-system: ubuntu-24.04
+      operating-system: ubuntu-22.04
       artifact-path: |
         **/build/reports
         service/src/mongoComponentTest/kotlin/com/lsdconsulting/generatorui/*.html
