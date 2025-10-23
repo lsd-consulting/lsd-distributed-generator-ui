@@ -143,7 +143,7 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.18")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:6.1.20")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.4.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.4.0")
 
