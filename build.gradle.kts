@@ -50,7 +50,7 @@ allprojects {
         mavenCentral()
     }
 
-    extra["springCloudVersion"] = "2023.0.6"
+    extra["springCloudVersion"] = "2025.0.0"
 
     tasks.withType<KotlinCompile> {
         compilerOptions {
