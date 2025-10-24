@@ -10,7 +10,7 @@ plugins {
     java
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
-    id("com.palantir.git-version") version "3.4.0"
+    id("com.palantir.git-version") version "4.1.0"
 }
 
 nexusPublishing.repositories.sonatype {
