@@ -111,7 +111,7 @@ dependencies {
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27")
     compileOnly("org.wiremock:wiremock-standalone:3.13.2")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.20.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.0")
     implementation("org.apache.commons:commons-collections4:4.5.0")
     implementation("org.apache.httpcomponents:httpcore:4.4.16") {
         because("it's needed for DB connection security")
