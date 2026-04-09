@@ -144,8 +144,8 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.25")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.6.4")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.6.4")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.6.5")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.6.5")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
