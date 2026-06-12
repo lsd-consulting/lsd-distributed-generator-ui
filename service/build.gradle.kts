@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "3.5.15"
+    id("org.springframework.boot") version "4.1.0"
     `maven-publish`
     id("java-library")
     id("signing")
