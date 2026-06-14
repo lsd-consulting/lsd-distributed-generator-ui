@@ -166,7 +166,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
 
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.41")
-    postgresComponentTestImplementation("com.zaxxer:HikariCP:7.0.2")
+    postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
