@@ -111,7 +111,10 @@ dependencies {
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27")
     compileOnly("org.wiremock:wiremock-standalone:3.13.2")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.22.2")
+    implementation("tools.jackson.module:jackson-module-kotlin")
+    // WireMock stub generator still emits Jackson 2 ObjectMapper references
+    compileOnly("com.fasterxml.jackson.core:jackson-databind")
+
     implementation("org.apache.commons:commons-collections4:4.6.0")
     implementation("org.apache.httpcomponents:httpcore:4.4.16") {
         because("it's needed for DB connection security")
