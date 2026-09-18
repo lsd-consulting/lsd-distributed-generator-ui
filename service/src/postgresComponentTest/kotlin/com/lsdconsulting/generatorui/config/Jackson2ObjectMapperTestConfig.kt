@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean
  * provide one for component tests until that connector ships its own fallback.
  */
 @TestConfiguration
-class Jackson2ObjectMapperTestConfig {
+open class Jackson2ObjectMapperTestConfig {
     @Bean
     @ConditionalOnMissingBean(ObjectMapper::class)
     fun jackson2ObjectMapper(): ObjectMapper = ObjectMapper().findAndRegisterModules()
