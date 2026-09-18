@@ -148,9 +148,9 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.51")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.10.0")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.10.0")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.56")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.12.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.12.0")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
@@ -172,7 +172,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.50")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.56")
     postgresComponentTestImplementation("com.fasterxml.jackson.core:jackson-databind")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 
