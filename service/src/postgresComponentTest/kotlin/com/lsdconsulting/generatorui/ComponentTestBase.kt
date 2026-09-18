@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureTestRestTemplate
 import org.springframework.context.annotation.Import
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
@@ -32,6 +33,7 @@ private const val POSTGRES_IMAGE = "postgres:15.3-alpine3.18"
 private const val TABLE_NAME = "lsd_database"
 
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = [LsdGeneratorUiApplication::class])
+@AutoConfigureTestRestTemplate
 @ActiveProfiles("test")
 @Import(LibraryConfig::class)
 class ComponentTestBase {
