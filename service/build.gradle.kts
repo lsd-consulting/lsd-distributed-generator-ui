@@ -146,6 +146,7 @@ dependencies {
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
+    mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.51")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.10.0")
@@ -169,6 +170,7 @@ dependencies {
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
+    postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.50")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
