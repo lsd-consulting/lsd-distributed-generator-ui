@@ -9,6 +9,7 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.lsdconsulting.lsd.distributed.connector.model.InteractionType
 import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
+import com.lsdconsulting.generatorui.config.Jackson2ObjectMapperTestConfig
 import io.lsdconsulting.lsd.distributed.postgres.config.LibraryConfig
 import org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric
 import org.junit.jupiter.api.AfterAll
@@ -35,7 +36,7 @@ private const val TABLE_NAME = "lsd_database"
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = [LsdGeneratorUiApplication::class])
 @AutoConfigureTestRestTemplate
 @ActiveProfiles("test")
-@Import(LibraryConfig::class)
+@Import(LibraryConfig::class, Jackson2ObjectMapperTestConfig::class)
 class ComponentTestBase {
 
     @Value("\${lsd.dist.connectionString}")
