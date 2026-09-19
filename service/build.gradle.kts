@@ -148,7 +148,7 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.56")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.57")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.12.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.12.0")
 
