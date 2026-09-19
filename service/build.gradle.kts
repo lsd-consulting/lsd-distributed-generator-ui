@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "3.5.16"
+    id("org.springframework.boot") version "4.1.1"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -111,7 +111,10 @@ dependencies {
     compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27")
     compileOnly("org.wiremock:wiremock-standalone:3.13.2")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.22.2")
+    implementation("tools.jackson.module:jackson-module-kotlin")
+    // WireMock stub generator still emits Jackson 2 ObjectMapper references
+    compileOnly("com.fasterxml.jackson.core:jackson-databind")
+
     implementation("org.apache.commons:commons-collections4:4.6.0")
     implementation("org.apache.httpcomponents:httpcore:4.4.16") {
         because("it's needed for DB connection security")
@@ -142,6 +145,8 @@ dependencies {
     //////////////////////////////////
     // Component test dependencies
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
+    mongoComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
+    mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.56")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.12.0")
@@ -164,8 +169,11 @@ dependencies {
     //////////////////////////////////
     // PostgreSQL component test dependencies
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-starter-test")
+    postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
+    postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
     postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.56")
+    postgresComponentTestImplementation("com.fasterxml.jackson.core:jackson-databind")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 
     postgresComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
