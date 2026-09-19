@@ -14,5 +14,5 @@ import org.springframework.context.annotation.Bean
 open class Jackson2ObjectMapperTestConfig {
     @Bean
     @ConditionalOnMissingBean(ObjectMapper::class)
-    fun jackson2ObjectMapper(): ObjectMapper = ObjectMapper().findAndRegisterModules()
+    open fun jackson2ObjectMapper(): ObjectMapper = ObjectMapper().findAndRegisterModules()
 }
