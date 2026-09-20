@@ -172,7 +172,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.56")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.57")
     postgresComponentTestImplementation("com.fasterxml.jackson.core:jackson-databind")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 

@@ -36,7 +36,7 @@ private const val TABLE_NAME = "lsd_database"
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = [LsdGeneratorUiApplication::class])
 @AutoConfigureTestRestTemplate
 @ActiveProfiles("test")
-@Import(LibraryConfig::class, Jackson2ObjectMapperTestConfig::class)
+@Import(Jackson2ObjectMapperTestConfig::class, LibraryConfig::class)
 class ComponentTestBase {
 
     @Value("\${lsd.dist.connectionString}")
