@@ -7,12 +7,13 @@ import org.springframework.context.annotation.Bean
 
 /**
  * Boot 4 no longer auto-exposes a Jackson 2 ObjectMapper (it uses Jackson 3).
- * The published postgres connector still injects com.fasterxml.jackson.databind.ObjectMapper;
- * provide one for component tests until that connector ships its own fallback.
+ * Postgres connector 4.0.57+ LibraryConfig registers its own ObjectMapper as
+ * objectMapper when missing; this bean covers older connectors / ordering edge cases.
+ * UI JsonMapper is registered as jsonMapper to avoid a same-name clash.
  */
 @TestConfiguration
 open class Jackson2ObjectMapperTestConfig {
     @Bean
     @ConditionalOnMissingBean(ObjectMapper::class)
-    open fun jackson2ObjectMapper(): ObjectMapper = ObjectMapper().findAndRegisterModules()
+    open fun objectMapper(): ObjectMapper = ObjectMapper().findAndRegisterModules()
 }

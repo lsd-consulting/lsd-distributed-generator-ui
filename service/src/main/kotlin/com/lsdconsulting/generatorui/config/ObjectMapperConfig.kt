@@ -9,11 +9,16 @@ import tools.jackson.databind.json.JsonMapper
 @Configuration
 class ObjectMapperConfig {
 
+    /**
+     * Named jsonMapper (not objectMapper) so Jackson 2 ObjectMapper beans from
+     * connectors (e.g. postgres LibraryConfig) can register as objectMapper
+     * without BeanDefinitionOverrideException under Boot 4.
+     */
     @Bean
-    fun objectMapper(): JsonMapper = ObjectMapperCreator().create()
+    fun jsonMapper(): JsonMapper = ObjectMapperCreator().create()
 
     @Bean
-    fun converter(objectMapper: JsonMapper): JacksonJsonHttpMessageConverter {
-        return JacksonJsonHttpMessageConverter(objectMapper)
+    fun converter(jsonMapper: JsonMapper): JacksonJsonHttpMessageConverter {
+        return JacksonJsonHttpMessageConverter(jsonMapper)
     }
 }
