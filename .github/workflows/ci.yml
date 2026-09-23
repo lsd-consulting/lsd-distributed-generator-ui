@@ -20,12 +20,12 @@ jobs:
         **/build/reports
         service/src/mongoComponentTest/kotlin/com/lsdconsulting/generatorui/*.html
         service/src/postgresComponentTest/kotlin/com/lsdconsulting/generatorui/*.html
-      java-version: '17'
+      java-version: '21'
       codecov: true
     secrets: inherit
   release:
     needs: build
     uses: lsd-consulting/shared-workflows/.github/workflows/release.yml@main
     with:
-      java-version: '17'
+      java-version: '21'
     secrets: inherit

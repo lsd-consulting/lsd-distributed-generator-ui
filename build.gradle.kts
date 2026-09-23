@@ -1,5 +1,5 @@
-import org.gradle.api.JavaVersion.VERSION_17
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+import org.gradle.api.JavaVersion.VERSION_21
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -55,14 +55,19 @@ allprojects {
     tasks.withType<KotlinCompile> {
         compilerOptions {
             freeCompilerArgs.set(listOf("-Xjsr305=strict"))
-            jvmTarget.set(JVM_17)
+            jvmTarget.set(JVM_21)
         }
     }
 
-    java.sourceCompatibility = VERSION_17
-    java.targetCompatibility = VERSION_17
-    java.withJavadocJar()
-    java.withSourcesJar()
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        }
+        sourceCompatibility = VERSION_21
+        targetCompatibility = VERSION_21
+        withJavadocJar()
+        withSourcesJar()
+    }
 
     dependencyManagement {
         imports {

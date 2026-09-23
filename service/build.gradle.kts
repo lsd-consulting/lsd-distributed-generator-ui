@@ -121,7 +121,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:11.0.61")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:13.0.0")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -148,7 +148,7 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:7.0.57")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:9.0.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.12.0")
     mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.12.0")
 
@@ -172,7 +172,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:4.0.57")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:6.0.0")
     postgresComponentTestImplementation("com.fasterxml.jackson.core:jackson-databind")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 
