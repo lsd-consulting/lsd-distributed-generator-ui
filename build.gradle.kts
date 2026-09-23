@@ -1,5 +1,5 @@
-import org.gradle.api.JavaVersion.VERSION_17
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+import org.gradle.api.JavaVersion.VERSION_21
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -50,19 +50,35 @@ allprojects {
         mavenCentral()
     }
 
+    // lsd-core 9 is compiled against kotlinx-coroutines 1.11 (runBlockingK);
+    // Spring Boot's BOM otherwise forces 1.10.2 and breaks at runtime.
+    configurations.configureEach {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlinx" && requested.name.startsWith("kotlinx-coroutines")) {
+                useVersion("1.11.0")
+                because("Align with lsd-core 9 (compiled against coroutines 1.11)")
+            }
+        }
+    }
+
     extra["springCloudVersion"] = "2025.1.3"
 
     tasks.withType<KotlinCompile> {
         compilerOptions {
             freeCompilerArgs.set(listOf("-Xjsr305=strict"))
-            jvmTarget.set(JVM_17)
+            jvmTarget.set(JVM_21)
         }
     }
 
-    java.sourceCompatibility = VERSION_17
-    java.targetCompatibility = VERSION_17
-    java.withJavadocJar()
-    java.withSourcesJar()
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        }
+        sourceCompatibility = VERSION_21
+        targetCompatibility = VERSION_21
+        withJavadocJar()
+        withSourcesJar()
+    }
 
     dependencyManagement {
         imports {
