@@ -50,6 +50,17 @@ allprojects {
         mavenCentral()
     }
 
+    // lsd-core 9 is compiled against kotlinx-coroutines 1.11 (runBlockingK);
+    // Spring Boot's BOM otherwise forces 1.10.2 and breaks at runtime.
+    configurations.configureEach {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlinx" && requested.name.startsWith("kotlinx-coroutines")) {
+                useVersion("1.11.0")
+                because("Align with lsd-core 9 (compiled against coroutines 1.11)")
+            }
+        }
+    }
+
     extra["springCloudVersion"] = "2025.1.3"
 
     tasks.withType<KotlinCompile> {
