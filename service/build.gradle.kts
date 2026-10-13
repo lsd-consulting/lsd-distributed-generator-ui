@@ -105,10 +105,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.29") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.27")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.29")
     compileOnly("org.wiremock:wiremock-standalone:3.13.2")
 
     implementation("tools.jackson.module:jackson-module-kotlin")
@@ -172,7 +172,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:6.0.1")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:6.0.5")
     postgresComponentTestImplementation("com.fasterxml.jackson.core:jackson-databind")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 
