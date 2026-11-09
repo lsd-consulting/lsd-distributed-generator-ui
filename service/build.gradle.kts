@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "4.1.1"
+    id("org.springframework.boot") version "4.1.2"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -105,10 +105,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // WireMockStubGenerator
-    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.29") {
+    kapt("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.31") {
         because("we want to generate WireMock stubs for client")
     }
-    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.29")
+    compileOnly("io.github.lsd-consulting:spring-wiremock-stub-generator:3.1.31")
     compileOnly("org.wiremock:wiremock-standalone:3.13.2")
 
     implementation("tools.jackson.module:jackson-module-kotlin")
@@ -148,9 +148,9 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:9.0.7")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.13.0")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.13.0")
+    mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:9.0.10")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.14.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.14.0")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
@@ -172,7 +172,7 @@ dependencies {
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-resttestclient")
     postgresComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
-    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:6.0.6")
+    postgresComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-postgres-connector:6.0.9")
     postgresComponentTestImplementation("com.fasterxml.jackson.core:jackson-databind")
     postgresComponentTestImplementation("com.zaxxer:HikariCP:7.1.0")
 
@@ -220,7 +220,7 @@ compileJavaStubs.finalizedBy(tasks.getByName("stubsJar"))
 //////////////////////////
 
 jacoco {
-    toolVersion = "0.8.15"
+    toolVersion = "0.8.16"
 }
 
 tasks.jacocoTestReport {
