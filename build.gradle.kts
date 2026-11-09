@@ -61,7 +61,7 @@ allprojects {
         }
     }
 
-    extra["springCloudVersion"] = "2025.1.3"
+    extra["springCloudVersion"] = "2025.1.4"
 
     tasks.withType<KotlinCompile> {
         compilerOptions {
