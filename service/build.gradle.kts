@@ -121,7 +121,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:13.0.0")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:13.0.36")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -132,14 +132,14 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-commons")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation("io.mockk:mockk:1.14.11") {
+    testImplementation("io.mockk:mockk:1.14.12") {
         because("we want to mock objects")
     }
 
     testImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
-    testImplementation("org.apache.commons:commons-lang3:3.21.0")
+    testImplementation("org.apache.commons:commons-lang3:3.22.0")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
