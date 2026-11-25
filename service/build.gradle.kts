@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.springframework.boot") version "4.1.2"
+    id("org.springframework.boot") version "4.2.0"
     `maven-publish`
     id("java-library")
     id("signing")
@@ -121,7 +121,7 @@ dependencies {
     }
 
     // LSD
-    implementation("io.github.lsd-consulting:lsd-distributed-generator:13.0.0")
+    implementation("io.github.lsd-consulting:lsd-distributed-generator:13.0.36")
 
     //////////////////////////////////
     // Unit test dependencies
@@ -132,14 +132,14 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-commons")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation("io.mockk:mockk:1.14.11") {
+    testImplementation("io.mockk:mockk:1.14.12") {
         because("we want to mock objects")
     }
 
     testImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
-    testImplementation("org.apache.commons:commons-lang3:3.21.0")
+    testImplementation("org.apache.commons:commons-lang3:3.22.0")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
 
     //////////////////////////////////
@@ -149,8 +149,8 @@ dependencies {
     mongoComponentTestImplementation("org.springframework.boot:spring-boot-restclient")
 
     mongoComponentTestImplementation("io.github.lsd-consulting:lsd-distributed-mongodb-connector:9.0.10")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.14.0")
-    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.14.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-core:5.15.0")
+    mongoComponentTestImplementation("org.mongodb:mongodb-driver-sync:5.15.0")
 
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-engine")
     mongoComponentTestImplementation("org.junit.jupiter:junit-jupiter-api") {
@@ -160,7 +160,7 @@ dependencies {
     mongoComponentTestImplementation("org.testcontainers:mongodb:1.21.4") {
         because("we want to test against a real MongoDb in Docker")
     }
-    mongoComponentTestImplementation("com.approvaltests:approvaltests:31.0.0")
+    mongoComponentTestImplementation("com.approvaltests:approvaltests:31.3.0")
     mongoComponentTestImplementation("org.jeasy:easy-random-core:5.0.0")
     mongoComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
@@ -184,7 +184,7 @@ dependencies {
     postgresComponentTestImplementation("org.testcontainers:junit-jupiter:1.21.4")
     postgresComponentTestImplementation("org.testcontainers:postgresql:1.21.4")
 
-    postgresComponentTestImplementation("com.approvaltests:approvaltests:31.0.0")
+    postgresComponentTestImplementation("com.approvaltests:approvaltests:31.3.0")
     postgresComponentTestImplementation("com.natpryce:hamkrest:1.8.0.1") {
         because("we want to assert nicely")
     }
