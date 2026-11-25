@@ -10,7 +10,7 @@ plugins {
     java
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
-    id("com.palantir.git-version") version "5.1.0"
+    id("com.palantir.git-version") version "5.2.0"
 }
 
 nexusPublishing.repositories.sonatype {
@@ -61,7 +61,7 @@ allprojects {
         }
     }
 
-    extra["springCloudVersion"] = "2025.1.4"
+    extra["springCloudVersion"] = "2025.1.5"
 
     tasks.withType<KotlinCompile> {
         compilerOptions {
